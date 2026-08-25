@@ -1,0 +1,41 @@
+[project]
+name = "vacacq"
+version = "0.1.0"
+description = "Reproduce Ellis et al. 2016 Ch.7 VACs on childes-db 2026.1 and probe BabyLM 100M checkpoints."
+readme = "README.md"
+authors = [
+    { name = "Alvin Tan", email = "66404649+alvinwmtan@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "huggingface-hub>=1.28.0",
+    "networkx>=3.6.1",
+    "nltk>=3.10.3",
+    "pandas>=3.0.5",
+    "polars>=1.44.0",
+    "pyarrow>=25.0.1",
+    "pyyaml>=6.0.3",
+    "redivis>=0.20.14",
+    "scikit-learn>=1.9.0",
+    "scipy>=1.18.1",
+    "stanza>=1.14.0",
+    "torch>=2.13.0",
+    "tqdm>=4.70.0",
+    "transformers>=5.15.1",
+]
+
+[project.scripts]
+vacacq = "vacacq.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "tests"]

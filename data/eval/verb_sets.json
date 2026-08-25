@@ -1,0 +1,18 @@
+{
+  "VL": {
+    "occupants": ["go", "come", "fall", "get", "sit", "look", "talk", "run", "walk", "jump"],
+    "distractors": ["eat", "sleep", "think", "know", "want", "like", "see", "have"]
+  },
+  "VOL": {
+    "occupants": ["put", "take", "get", "give", "throw", "drop", "set", "place"],
+    "distractors": ["sleep", "go", "talk", "think", "want", "like", "know", "sit"]
+  },
+  "VOO": {
+    "occupants": ["give", "tell", "show", "send", "bring", "hand", "offer", "read"],
+    "distractors": ["donate", "sleep", "go", "put", "eat", "sit", "fall", "talk"]
+  },
+  "VO": {
+    "occupants": ["get", "have", "want", "see", "eat", "make", "find", "take"],
+    "distractors": ["sleep", "go", "sit", "fall", "come", "arrive"]
+  }
+}

@@ -1,0 +1,19 @@
+{"id": "vl_off_01", "construction": "VL", "preposition": "off", "template": "She {verb} off the chair.", "slot": "verb"}
+{"id": "vl_off_02", "construction": "VL", "preposition": "off", "template": "He {verb} off the bed.", "slot": "verb"}
+{"id": "vl_into_01", "construction": "VL", "preposition": "into", "template": "They {verb} into the room.", "slot": "verb"}
+{"id": "vl_about_01", "construction": "VL", "preposition": "about", "template": "We {verb} about the problem.", "slot": "verb"}
+{"id": "vl_at_01", "construction": "VL", "preposition": "at", "template": "She {verb} at the picture.", "slot": "verb"}
+{"id": "vl_down_01", "construction": "VL", "preposition": "down", "template": "He {verb} down the stairs.", "slot": "verb"}
+{"id": "vl_on_01", "construction": "VL", "preposition": "on", "template": "The cat {verb} on the mat.", "slot": "verb"}
+{"id": "vl_to_01", "construction": "VL", "preposition": "to", "template": "They {verb} to the park.", "slot": "verb"}
+{"id": "vol_on_01", "construction": "VOL", "preposition": "on", "template": "She {verb} the cup on the table.", "slot": "verb"}
+{"id": "vol_off_01", "construction": "VOL", "preposition": "off", "template": "He {verb} the hat off the hook.", "slot": "verb"}
+{"id": "vol_in_01", "construction": "VOL", "preposition": "in", "template": "They {verb} the toys in the box.", "slot": "verb"}
+{"id": "vol_to_01", "construction": "VOL", "preposition": "to", "template": "She {verb} the book to the child.", "slot": "verb"}
+{"id": "vol_into_01", "construction": "VOL", "preposition": "into", "template": "He {verb} the letter into the envelope.", "slot": "verb"}
+{"id": "voo_01", "construction": "VOO", "preposition": null, "template": "They {verb} him the book.", "slot": "verb"}
+{"id": "voo_02", "construction": "VOO", "preposition": null, "template": "She {verb} the child a cookie.", "slot": "verb"}
+{"id": "voo_03", "construction": "VOO", "preposition": null, "template": "He {verb} me the keys.", "slot": "verb"}
+{"id": "vo_01", "construction": "VO", "preposition": null, "template": "She {verb} the apple.", "slot": "verb"}
+{"id": "vo_02", "construction": "VO", "preposition": null, "template": "They {verb} a house.", "slot": "verb"}
+{"id": "vo_03", "construction": "VO", "preposition": null, "template": "He {verb} the door.", "slot": "verb"}

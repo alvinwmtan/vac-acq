@@ -1,0 +1,89 @@
+{
+  "status": "ok",
+  "n_corpora": 83,
+  "n_s7_2": 41,
+  "n_new": 42,
+  "mean_parsed_rate": 0.8183030468703432,
+  "s7_2_missing_from_2026_1": [
+    "cornell",
+    "korman"
+  ],
+  "zero_parse_corpora": [
+    "Davis-CDI",
+    "Goad",
+    "PaidoEnglish",
+    "Penney",
+    "Rowe",
+    "Sprott",
+    "StanfordEnglish",
+    "Forrester",
+    "Smith"
+  ],
+  "parsed_rate_below_0.5": [
+    {
+      "collection_name": "Eng-NA",
+      "corpus_name": "Davis",
+      "parsed_rate": 0.17001730183276936
+    },
+    {
+      "collection_name": "Eng-NA",
+      "corpus_name": "Davis-CDI",
+      "parsed_rate": 0.0
+    },
+    {
+      "collection_name": "Eng-NA",
+      "corpus_name": "Goad",
+      "parsed_rate": 0.0
+    },
+    {
+      "collection_name": "Eng-NA",
+      "corpus_name": "Inkelas",
+      "parsed_rate": 0.0068775790921595595
+    },
+    {
+      "collection_name": "Eng-NA",
+      "corpus_name": "Menn",
+      "parsed_rate": 0.3093952977769646
+    },
+    {
+      "collection_name": "Eng-NA",
+      "corpus_name": "PaidoEnglish",
+      "parsed_rate": 0.0
+    },
+    {
+      "collection_name": "Eng-NA",
+      "corpus_name": "Penney",
+      "parsed_rate": 0.0
+    },
+    {
+      "collection_name": "Eng-NA",
+      "corpus_name": "Rowe",
+      "parsed_rate": 0.0
+    },
+    {
+      "collection_name": "Eng-NA",
+      "corpus_name": "Sprott",
+      "parsed_rate": 0.0
+    },
+    {
+      "collection_name": "Eng-NA",
+      "corpus_name": "StanfordEnglish",
+      "parsed_rate": 0.0
+    },
+    {
+      "collection_name": "Eng-UK",
+      "corpus_name": "Cruttenden",
+      "parsed_rate": 0.0888607101053453
+    },
+    {
+      "collection_name": "Eng-UK",
+      "corpus_name": "Forrester",
+      "parsed_rate": 0.0
+    },
+    {
+      "collection_name": "Eng-UK",
+      "corpus_name": "Smith",
+      "parsed_rate": 0.0
+    }
+  ]
+}

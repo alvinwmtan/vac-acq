@@ -1,0 +1,16 @@
+{"id": "aff_vl_off_01", "construction": "VL", "verb": "come", "grammatical": "She came off the chair.", "control": "Off she chair the came."}
+{"id": "aff_vl_off_02", "construction": "VL", "verb": "fall", "grammatical": "He fell off the bed.", "control": "He put the book off the bed."}
+{"id": "aff_vl_into_01", "construction": "VL", "verb": "go", "grammatical": "They went into the room.", "control": "They put into the room."}
+{"id": "aff_vl_about_01", "construction": "VL", "verb": "talk", "grammatical": "We talked about the problem.", "control": "We put about the problem."}
+{"id": "aff_vl_at_01", "construction": "VL", "verb": "look", "grammatical": "She looked at the picture.", "control": "She put at the picture."}
+{"id": "aff_vol_on_01", "construction": "VOL", "verb": "put", "grammatical": "She put the cup on the table.", "control": "She went the cup on the table."}
+{"id": "aff_vol_off_01", "construction": "VOL", "verb": "take", "grammatical": "He took the hat off the hook.", "control": "He slept the hat off the hook."}
+{"id": "aff_vol_in_01", "construction": "VOL", "verb": "put", "grammatical": "They put the toys in the box.", "control": "In they toys the put box the."}
+{"id": "aff_voo_01", "construction": "VOO", "verb": "give", "grammatical": "They gave him the book.", "control": "They donated him the book."}
+{"id": "aff_voo_02", "construction": "VOO", "verb": "tell", "grammatical": "She told the child a story.", "control": "She put the child a story."}
+{"id": "aff_voo_03", "construction": "VOO", "verb": "show", "grammatical": "He showed me the keys.", "control": "He slept me the keys."}
+{"id": "aff_vo_01", "construction": "VO", "verb": "eat", "grammatical": "She ate the apple.", "control": "She slept the apple."}
+{"id": "aff_vo_02", "construction": "VO", "verb": "get", "grammatical": "They got a house.", "control": "They went a house."}
+{"id": "aff_vo_03", "construction": "VO", "verb": "open", "grammatical": "He opened the door.", "control": "He sat the door."}
+{"id": "aff_vl_down_01", "construction": "VL", "verb": "sit", "grammatical": "She sat down on the floor.", "control": "She ate down on the floor."}
+{"id": "aff_vol_to_01", "construction": "VOL", "verb": "give", "grammatical": "She gave the book to the child.", "control": "She slept the book to the child."}

@@ -1,0 +1,19 @@
+{
+  "source": "Ellis, Römer & O'Donnell (2016) Tables S7.7–S7.12 qualitative lead verbs",
+  "schematic": {
+    "VL": ["come", "go"],
+    "VOL": ["put"],
+    "VO": ["get"],
+    "VOO": ["give"]
+  },
+  "prep_specific": {
+    "VL-about": ["talk"],
+    "VL-at": ["look"],
+    "VL-down_parents": ["sit"],
+    "VL-down_children": ["fall"],
+    "VOL-off": ["take"],
+    "VOL-to": ["give"]
+  },
+  "zipf_r2_min": 0.9,
+  "parent_child_r_target": 0.8
+}

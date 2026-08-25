@@ -1,0 +1,315 @@
+item_id,construction,preposition,verb,kind,sentence
+vl_off_01,VL,off,go,occupant,She go off the chair.
+vl_off_01,VL,off,come,occupant,She come off the chair.
+vl_off_01,VL,off,fall,occupant,She fall off the chair.
+vl_off_01,VL,off,get,occupant,She get off the chair.
+vl_off_01,VL,off,sit,occupant,She sit off the chair.
+vl_off_01,VL,off,look,occupant,She look off the chair.
+vl_off_01,VL,off,talk,occupant,She talk off the chair.
+vl_off_01,VL,off,run,occupant,She run off the chair.
+vl_off_01,VL,off,walk,occupant,She walk off the chair.
+vl_off_01,VL,off,jump,occupant,She jump off the chair.
+vl_off_01,VL,off,eat,distractor,She eat off the chair.
+vl_off_01,VL,off,sleep,distractor,She sleep off the chair.
+vl_off_01,VL,off,think,distractor,She think off the chair.
+vl_off_01,VL,off,know,distractor,She know off the chair.
+vl_off_01,VL,off,want,distractor,She want off the chair.
+vl_off_01,VL,off,like,distractor,She like off the chair.
+vl_off_01,VL,off,see,distractor,She see off the chair.
+vl_off_01,VL,off,have,distractor,She have off the chair.
+vl_off_02,VL,off,go,occupant,He go off the bed.
+vl_off_02,VL,off,come,occupant,He come off the bed.
+vl_off_02,VL,off,fall,occupant,He fall off the bed.
+vl_off_02,VL,off,get,occupant,He get off the bed.
+vl_off_02,VL,off,sit,occupant,He sit off the bed.
+vl_off_02,VL,off,look,occupant,He look off the bed.
+vl_off_02,VL,off,talk,occupant,He talk off the bed.
+vl_off_02,VL,off,run,occupant,He run off the bed.
+vl_off_02,VL,off,walk,occupant,He walk off the bed.
+vl_off_02,VL,off,jump,occupant,He jump off the bed.
+vl_off_02,VL,off,eat,distractor,He eat off the bed.
+vl_off_02,VL,off,sleep,distractor,He sleep off the bed.
+vl_off_02,VL,off,think,distractor,He think off the bed.
+vl_off_02,VL,off,know,distractor,He know off the bed.
+vl_off_02,VL,off,want,distractor,He want off the bed.
+vl_off_02,VL,off,like,distractor,He like off the bed.
+vl_off_02,VL,off,see,distractor,He see off the bed.
+vl_off_02,VL,off,have,distractor,He have off the bed.
+vl_into_01,VL,into,go,occupant,They go into the room.
+vl_into_01,VL,into,come,occupant,They come into the room.
+vl_into_01,VL,into,fall,occupant,They fall into the room.
+vl_into_01,VL,into,get,occupant,They get into the room.
+vl_into_01,VL,into,sit,occupant,They sit into the room.
+vl_into_01,VL,into,look,occupant,They look into the room.
+vl_into_01,VL,into,talk,occupant,They talk into the room.
+vl_into_01,VL,into,run,occupant,They run into the room.
+vl_into_01,VL,into,walk,occupant,They walk into the room.
+vl_into_01,VL,into,jump,occupant,They jump into the room.
+vl_into_01,VL,into,eat,distractor,They eat into the room.
+vl_into_01,VL,into,sleep,distractor,They sleep into the room.
+vl_into_01,VL,into,think,distractor,They think into the room.
+vl_into_01,VL,into,know,distractor,They know into the room.
+vl_into_01,VL,into,want,distractor,They want into the room.
+vl_into_01,VL,into,like,distractor,They like into the room.
+vl_into_01,VL,into,see,distractor,They see into the room.
+vl_into_01,VL,into,have,distractor,They have into the room.
+vl_about_01,VL,about,go,occupant,We go about the problem.
+vl_about_01,VL,about,come,occupant,We come about the problem.
+vl_about_01,VL,about,fall,occupant,We fall about the problem.
+vl_about_01,VL,about,get,occupant,We get about the problem.
+vl_about_01,VL,about,sit,occupant,We sit about the problem.
+vl_about_01,VL,about,look,occupant,We look about the problem.
+vl_about_01,VL,about,talk,occupant,We talk about the problem.
+vl_about_01,VL,about,run,occupant,We run about the problem.
+vl_about_01,VL,about,walk,occupant,We walk about the problem.
+vl_about_01,VL,about,jump,occupant,We jump about the problem.
+vl_about_01,VL,about,eat,distractor,We eat about the problem.
+vl_about_01,VL,about,sleep,distractor,We sleep about the problem.
+vl_about_01,VL,about,think,distractor,We think about the problem.
+vl_about_01,VL,about,know,distractor,We know about the problem.
+vl_about_01,VL,about,want,distractor,We want about the problem.
+vl_about_01,VL,about,like,distractor,We like about the problem.
+vl_about_01,VL,about,see,distractor,We see about the problem.
+vl_about_01,VL,about,have,distractor,We have about the problem.
+vl_at_01,VL,at,go,occupant,She go at the picture.
+vl_at_01,VL,at,come,occupant,She come at the picture.
+vl_at_01,VL,at,fall,occupant,She fall at the picture.
+vl_at_01,VL,at,get,occupant,She get at the picture.
+vl_at_01,VL,at,sit,occupant,She sit at the picture.
+vl_at_01,VL,at,look,occupant,She look at the picture.
+vl_at_01,VL,at,talk,occupant,She talk at the picture.
+vl_at_01,VL,at,run,occupant,She run at the picture.
+vl_at_01,VL,at,walk,occupant,She walk at the picture.
+vl_at_01,VL,at,jump,occupant,She jump at the picture.
+vl_at_01,VL,at,eat,distractor,She eat at the picture.
+vl_at_01,VL,at,sleep,distractor,She sleep at the picture.
+vl_at_01,VL,at,think,distractor,She think at the picture.
+vl_at_01,VL,at,know,distractor,She know at the picture.
+vl_at_01,VL,at,want,distractor,She want at the picture.
+vl_at_01,VL,at,like,distractor,She like at the picture.
+vl_at_01,VL,at,see,distractor,She see at the picture.
+vl_at_01,VL,at,have,distractor,She have at the picture.
+vl_down_01,VL,down,go,occupant,He go down the stairs.
+vl_down_01,VL,down,come,occupant,He come down the stairs.
+vl_down_01,VL,down,fall,occupant,He fall down the stairs.
+vl_down_01,VL,down,get,occupant,He get down the stairs.
+vl_down_01,VL,down,sit,occupant,He sit down the stairs.
+vl_down_01,VL,down,look,occupant,He look down the stairs.
+vl_down_01,VL,down,talk,occupant,He talk down the stairs.
+vl_down_01,VL,down,run,occupant,He run down the stairs.
+vl_down_01,VL,down,walk,occupant,He walk down the stairs.
+vl_down_01,VL,down,jump,occupant,He jump down the stairs.
+vl_down_01,VL,down,eat,distractor,He eat down the stairs.
+vl_down_01,VL,down,sleep,distractor,He sleep down the stairs.
+vl_down_01,VL,down,think,distractor,He think down the stairs.
+vl_down_01,VL,down,know,distractor,He know down the stairs.
+vl_down_01,VL,down,want,distractor,He want down the stairs.
+vl_down_01,VL,down,like,distractor,He like down the stairs.
+vl_down_01,VL,down,see,distractor,He see down the stairs.
+vl_down_01,VL,down,have,distractor,He have down the stairs.
+vl_on_01,VL,on,go,occupant,The cat go on the mat.
+vl_on_01,VL,on,come,occupant,The cat come on the mat.
+vl_on_01,VL,on,fall,occupant,The cat fall on the mat.
+vl_on_01,VL,on,get,occupant,The cat get on the mat.
+vl_on_01,VL,on,sit,occupant,The cat sit on the mat.
+vl_on_01,VL,on,look,occupant,The cat look on the mat.
+vl_on_01,VL,on,talk,occupant,The cat talk on the mat.
+vl_on_01,VL,on,run,occupant,The cat run on the mat.
+vl_on_01,VL,on,walk,occupant,The cat walk on the mat.
+vl_on_01,VL,on,jump,occupant,The cat jump on the mat.
+vl_on_01,VL,on,eat,distractor,The cat eat on the mat.
+vl_on_01,VL,on,sleep,distractor,The cat sleep on the mat.
+vl_on_01,VL,on,think,distractor,The cat think on the mat.
+vl_on_01,VL,on,know,distractor,The cat know on the mat.
+vl_on_01,VL,on,want,distractor,The cat want on the mat.
+vl_on_01,VL,on,like,distractor,The cat like on the mat.
+vl_on_01,VL,on,see,distractor,The cat see on the mat.
+vl_on_01,VL,on,have,distractor,The cat have on the mat.
+vl_to_01,VL,to,go,occupant,They go to the park.
+vl_to_01,VL,to,come,occupant,They come to the park.
+vl_to_01,VL,to,fall,occupant,They fall to the park.
+vl_to_01,VL,to,get,occupant,They get to the park.
+vl_to_01,VL,to,sit,occupant,They sit to the park.
+vl_to_01,VL,to,look,occupant,They look to the park.
+vl_to_01,VL,to,talk,occupant,They talk to the park.
+vl_to_01,VL,to,run,occupant,They run to the park.
+vl_to_01,VL,to,walk,occupant,They walk to the park.
+vl_to_01,VL,to,jump,occupant,They jump to the park.
+vl_to_01,VL,to,eat,distractor,They eat to the park.
+vl_to_01,VL,to,sleep,distractor,They sleep to the park.
+vl_to_01,VL,to,think,distractor,They think to the park.
+vl_to_01,VL,to,know,distractor,They know to the park.
+vl_to_01,VL,to,want,distractor,They want to the park.
+vl_to_01,VL,to,like,distractor,They like to the park.
+vl_to_01,VL,to,see,distractor,They see to the park.
+vl_to_01,VL,to,have,distractor,They have to the park.
+vol_on_01,VOL,on,put,occupant,She put the cup on the table.
+vol_on_01,VOL,on,take,occupant,She take the cup on the table.
+vol_on_01,VOL,on,get,occupant,She get the cup on the table.
+vol_on_01,VOL,on,give,occupant,She give the cup on the table.
+vol_on_01,VOL,on,throw,occupant,She throw the cup on the table.
+vol_on_01,VOL,on,drop,occupant,She drop the cup on the table.
+vol_on_01,VOL,on,set,occupant,She set the cup on the table.
+vol_on_01,VOL,on,place,occupant,She place the cup on the table.
+vol_on_01,VOL,on,sleep,distractor,She sleep the cup on the table.
+vol_on_01,VOL,on,go,distractor,She go the cup on the table.
+vol_on_01,VOL,on,talk,distractor,She talk the cup on the table.
+vol_on_01,VOL,on,think,distractor,She think the cup on the table.
+vol_on_01,VOL,on,want,distractor,She want the cup on the table.
+vol_on_01,VOL,on,like,distractor,She like the cup on the table.
+vol_on_01,VOL,on,know,distractor,She know the cup on the table.
+vol_on_01,VOL,on,sit,distractor,She sit the cup on the table.
+vol_off_01,VOL,off,put,occupant,He put the hat off the hook.
+vol_off_01,VOL,off,take,occupant,He take the hat off the hook.
+vol_off_01,VOL,off,get,occupant,He get the hat off the hook.
+vol_off_01,VOL,off,give,occupant,He give the hat off the hook.
+vol_off_01,VOL,off,throw,occupant,He throw the hat off the hook.
+vol_off_01,VOL,off,drop,occupant,He drop the hat off the hook.
+vol_off_01,VOL,off,set,occupant,He set the hat off the hook.
+vol_off_01,VOL,off,place,occupant,He place the hat off the hook.
+vol_off_01,VOL,off,sleep,distractor,He sleep the hat off the hook.
+vol_off_01,VOL,off,go,distractor,He go the hat off the hook.
+vol_off_01,VOL,off,talk,distractor,He talk the hat off the hook.
+vol_off_01,VOL,off,think,distractor,He think the hat off the hook.
+vol_off_01,VOL,off,want,distractor,He want the hat off the hook.
+vol_off_01,VOL,off,like,distractor,He like the hat off the hook.
+vol_off_01,VOL,off,know,distractor,He know the hat off the hook.
+vol_off_01,VOL,off,sit,distractor,He sit the hat off the hook.
+vol_in_01,VOL,in,put,occupant,They put the toys in the box.
+vol_in_01,VOL,in,take,occupant,They take the toys in the box.
+vol_in_01,VOL,in,get,occupant,They get the toys in the box.
+vol_in_01,VOL,in,give,occupant,They give the toys in the box.
+vol_in_01,VOL,in,throw,occupant,They throw the toys in the box.
+vol_in_01,VOL,in,drop,occupant,They drop the toys in the box.
+vol_in_01,VOL,in,set,occupant,They set the toys in the box.
+vol_in_01,VOL,in,place,occupant,They place the toys in the box.
+vol_in_01,VOL,in,sleep,distractor,They sleep the toys in the box.
+vol_in_01,VOL,in,go,distractor,They go the toys in the box.
+vol_in_01,VOL,in,talk,distractor,They talk the toys in the box.
+vol_in_01,VOL,in,think,distractor,They think the toys in the box.
+vol_in_01,VOL,in,want,distractor,They want the toys in the box.
+vol_in_01,VOL,in,like,distractor,They like the toys in the box.
+vol_in_01,VOL,in,know,distractor,They know the toys in the box.
+vol_in_01,VOL,in,sit,distractor,They sit the toys in the box.
+vol_to_01,VOL,to,put,occupant,She put the book to the child.
+vol_to_01,VOL,to,take,occupant,She take the book to the child.
+vol_to_01,VOL,to,get,occupant,She get the book to the child.
+vol_to_01,VOL,to,give,occupant,She give the book to the child.
+vol_to_01,VOL,to,throw,occupant,She throw the book to the child.
+vol_to_01,VOL,to,drop,occupant,She drop the book to the child.
+vol_to_01,VOL,to,set,occupant,She set the book to the child.
+vol_to_01,VOL,to,place,occupant,She place the book to the child.
+vol_to_01,VOL,to,sleep,distractor,She sleep the book to the child.
+vol_to_01,VOL,to,go,distractor,She go the book to the child.
+vol_to_01,VOL,to,talk,distractor,She talk the book to the child.
+vol_to_01,VOL,to,think,distractor,She think the book to the child.
+vol_to_01,VOL,to,want,distractor,She want the book to the child.
+vol_to_01,VOL,to,like,distractor,She like the book to the child.
+vol_to_01,VOL,to,know,distractor,She know the book to the child.
+vol_to_01,VOL,to,sit,distractor,She sit the book to the child.
+vol_into_01,VOL,into,put,occupant,He put the letter into the envelope.
+vol_into_01,VOL,into,take,occupant,He take the letter into the envelope.
+vol_into_01,VOL,into,get,occupant,He get the letter into the envelope.
+vol_into_01,VOL,into,give,occupant,He give the letter into the envelope.
+vol_into_01,VOL,into,throw,occupant,He throw the letter into the envelope.
+vol_into_01,VOL,into,drop,occupant,He drop the letter into the envelope.
+vol_into_01,VOL,into,set,occupant,He set the letter into the envelope.
+vol_into_01,VOL,into,place,occupant,He place the letter into the envelope.
+vol_into_01,VOL,into,sleep,distractor,He sleep the letter into the envelope.
+vol_into_01,VOL,into,go,distractor,He go the letter into the envelope.
+vol_into_01,VOL,into,talk,distractor,He talk the letter into the envelope.
+vol_into_01,VOL,into,think,distractor,He think the letter into the envelope.
+vol_into_01,VOL,into,want,distractor,He want the letter into the envelope.
+vol_into_01,VOL,into,like,distractor,He like the letter into the envelope.
+vol_into_01,VOL,into,know,distractor,He know the letter into the envelope.
+vol_into_01,VOL,into,sit,distractor,He sit the letter into the envelope.
+voo_01,VOO,,give,occupant,They give him the book.
+voo_01,VOO,,tell,occupant,They tell him the book.
+voo_01,VOO,,show,occupant,They show him the book.
+voo_01,VOO,,send,occupant,They send him the book.
+voo_01,VOO,,bring,occupant,They bring him the book.
+voo_01,VOO,,hand,occupant,They hand him the book.
+voo_01,VOO,,offer,occupant,They offer him the book.
+voo_01,VOO,,read,occupant,They read him the book.
+voo_01,VOO,,donate,distractor,They donate him the book.
+voo_01,VOO,,sleep,distractor,They sleep him the book.
+voo_01,VOO,,go,distractor,They go him the book.
+voo_01,VOO,,put,distractor,They put him the book.
+voo_01,VOO,,eat,distractor,They eat him the book.
+voo_01,VOO,,sit,distractor,They sit him the book.
+voo_01,VOO,,fall,distractor,They fall him the book.
+voo_01,VOO,,talk,distractor,They talk him the book.
+voo_02,VOO,,give,occupant,She give the child a cookie.
+voo_02,VOO,,tell,occupant,She tell the child a cookie.
+voo_02,VOO,,show,occupant,She show the child a cookie.
+voo_02,VOO,,send,occupant,She send the child a cookie.
+voo_02,VOO,,bring,occupant,She bring the child a cookie.
+voo_02,VOO,,hand,occupant,She hand the child a cookie.
+voo_02,VOO,,offer,occupant,She offer the child a cookie.
+voo_02,VOO,,read,occupant,She read the child a cookie.
+voo_02,VOO,,donate,distractor,She donate the child a cookie.
+voo_02,VOO,,sleep,distractor,She sleep the child a cookie.
+voo_02,VOO,,go,distractor,She go the child a cookie.
+voo_02,VOO,,put,distractor,She put the child a cookie.
+voo_02,VOO,,eat,distractor,She eat the child a cookie.
+voo_02,VOO,,sit,distractor,She sit the child a cookie.
+voo_02,VOO,,fall,distractor,She fall the child a cookie.
+voo_02,VOO,,talk,distractor,She talk the child a cookie.
+voo_03,VOO,,give,occupant,He give me the keys.
+voo_03,VOO,,tell,occupant,He tell me the keys.
+voo_03,VOO,,show,occupant,He show me the keys.
+voo_03,VOO,,send,occupant,He send me the keys.
+voo_03,VOO,,bring,occupant,He bring me the keys.
+voo_03,VOO,,hand,occupant,He hand me the keys.
+voo_03,VOO,,offer,occupant,He offer me the keys.
+voo_03,VOO,,read,occupant,He read me the keys.
+voo_03,VOO,,donate,distractor,He donate me the keys.
+voo_03,VOO,,sleep,distractor,He sleep me the keys.
+voo_03,VOO,,go,distractor,He go me the keys.
+voo_03,VOO,,put,distractor,He put me the keys.
+voo_03,VOO,,eat,distractor,He eat me the keys.
+voo_03,VOO,,sit,distractor,He sit me the keys.
+voo_03,VOO,,fall,distractor,He fall me the keys.
+voo_03,VOO,,talk,distractor,He talk me the keys.
+vo_01,VO,,get,occupant,She get the apple.
+vo_01,VO,,have,occupant,She have the apple.
+vo_01,VO,,want,occupant,She want the apple.
+vo_01,VO,,see,occupant,She see the apple.
+vo_01,VO,,eat,occupant,She eat the apple.
+vo_01,VO,,make,occupant,She make the apple.
+vo_01,VO,,find,occupant,She find the apple.
+vo_01,VO,,take,occupant,She take the apple.
+vo_01,VO,,sleep,distractor,She sleep the apple.
+vo_01,VO,,go,distractor,She go the apple.
+vo_01,VO,,sit,distractor,She sit the apple.
+vo_01,VO,,fall,distractor,She fall the apple.
+vo_01,VO,,come,distractor,She come the apple.
+vo_01,VO,,arrive,distractor,She arrive the apple.
+vo_02,VO,,get,occupant,They get a house.
+vo_02,VO,,have,occupant,They have a house.
+vo_02,VO,,want,occupant,They want a house.
+vo_02,VO,,see,occupant,They see a house.
+vo_02,VO,,eat,occupant,They eat a house.
+vo_02,VO,,make,occupant,They make a house.
+vo_02,VO,,find,occupant,They find a house.
+vo_02,VO,,take,occupant,They take a house.
+vo_02,VO,,sleep,distractor,They sleep a house.
+vo_02,VO,,go,distractor,They go a house.
+vo_02,VO,,sit,distractor,They sit a house.
+vo_02,VO,,fall,distractor,They fall a house.
+vo_02,VO,,come,distractor,They come a house.
+vo_02,VO,,arrive,distractor,They arrive a house.
+vo_03,VO,,get,occupant,He get the door.
+vo_03,VO,,have,occupant,He have the door.
+vo_03,VO,,want,occupant,He want the door.
+vo_03,VO,,see,occupant,He see the door.
+vo_03,VO,,eat,occupant,He eat the door.
+vo_03,VO,,make,occupant,He make the door.
+vo_03,VO,,find,occupant,He find the door.
+vo_03,VO,,take,occupant,He take the door.
+vo_03,VO,,sleep,distractor,He sleep the door.
+vo_03,VO,,go,distractor,He go the door.
+vo_03,VO,,sit,distractor,He sit the door.
+vo_03,VO,,fall,distractor,He fall the door.
+vo_03,VO,,come,distractor,He come the door.
+vo_03,VO,,arrive,distractor,He arrive the door.

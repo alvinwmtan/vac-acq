@@ -1,0 +1,20 @@
+{
+  "verbs": [
+    "afford", "allocate", "allow", "ask", "assign", "assure", "bake",
+    "blow", "bring", "build", "buy", "cause", "charge", "cook", "cost",
+    "cut", "deal", "deny", "design", "do", "draw", "drop", "earn", "feed",
+    "fetch", "find", "fine", "get", "give", "grant", "grow", "guarantee",
+    "hand", "hit", "keep", "kick", "leave", "lend", "loan", "mail", "make",
+    "offer", "order", "owe", "paint", "pass", "pay", "permit", "pick",
+    "play", "pour", "prescribe", "promise", "read", "refuse", "roll",
+    "save", "sell", "send", "serve", "set", "show", "sing", "spare",
+    "spell", "supply", "take", "teach", "tell", "throw", "toss", "vote",
+    "wish", "write"
+  ],
+  "no_hits_in_original": [
+    "afford", "allocate", "allow", "assign", "assure", "deal", "deny",
+    "design", "fine", "grant", "permit", "prescribe", "refuse", "spare",
+    "spell", "supply", "vote"
+  ],
+  "source": "Ellis, Römer & O'Donnell (2016) Table S7.5 (Mukherjee 2005 + corpus types)"
+}

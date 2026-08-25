@@ -1,0 +1,15 @@
+{
+  "vl_and_vol": [
+    "about", "around", "in", "into", "off", "over", "through", "to",
+    "under", "behind", "down", "from", "on", "outside"
+  ],
+  "vl_only": ["across", "at", "along", "inside", "near", "past"],
+  "vol_only": ["onto"],
+  "parent_all_child_ii_only": ["near", "onto"],
+  "excluded": [
+    "after", "against", "as", "between", "for", "like", "of", "towards",
+    "with", "above", "among", "before", "below", "beside", "by", "toward",
+    "underneath", "until", "up", "upon", "without"
+  ],
+  "source": "Ellis, Römer & O'Donnell (2016) Table S7.3"
+}
