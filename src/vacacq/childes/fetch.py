@@ -129,12 +129,21 @@ def load_corpora_tokens(
     for corpus in corpora:
         path = CACHE / f"tokens_{corpus}.parquet"
         if path.exists():
+            print(f"cache hit {corpus}: {path}")
             frames.append(_annotate(pd.read_parquet(path)))
             continue
-        df = load_analysis_tokens(corpora=[corpus], roles=roles)
+        print(f"fetching {corpus} from childes-db 2026.1 …", flush=True)
+        df = try_query(_tokens_sql(corpora=[corpus], roles=roles))
+        if df is None:
+            err = (CACHE / "redivis_error.txt").read_text(encoding="utf-8") if (CACHE / "redivis_error.txt").exists() else "unknown"
+            raise RuntimeError(f"Redivis failed for {corpus}: {err[:400]}")
         if df.empty:
+            print(f"{corpus}: 0 rows in the 18–72 month child/parent window")
+            df.to_parquet(path, index=False)
             continue
+        df = _annotate(df)
         df.to_parquet(path, index=False)
+        print(f"wrote {path} ({len(df)} tokens)", flush=True)
         frames.append(df)
     if not frames:
         return pd.DataFrame()

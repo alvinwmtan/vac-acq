@@ -87,3 +87,27 @@ def audit_coverage() -> pd.DataFrame:
         encoding="utf-8",
     )
     return df
+
+
+def parsed_corpus_names(*, min_rate: float = 0.0) -> set[str] | None:
+    """Corpus names with parsed_rate > min_rate. None if coverage has not been audited."""
+    path = CACHE / "coverage.parquet"
+    if not path.exists():
+        path = CACHE / "coverage.csv"
+    if not path.exists():
+        return None
+    df = pd.read_parquet(path) if path.suffix == ".parquet" else pd.read_csv(path)
+    if "parsed_rate" not in df.columns or "corpus_name" not in df.columns:
+        return None
+    kept = df.loc[df["parsed_rate"] > min_rate, "corpus_name"].astype(str)
+    return set(kept)
+
+
+def drop_unparsed_corpora(frame: pd.DataFrame, *, min_rate: float = 0.0) -> pd.DataFrame:
+    """Drop rows whose corpus has no (or below-threshold) UD parses."""
+    if frame.empty or "corpus_name" not in frame.columns:
+        return frame
+    names = parsed_corpus_names(min_rate=min_rate)
+    if names is None:
+        return frame
+    return frame.loc[frame["corpus_name"].astype(str).isin(names)].copy()

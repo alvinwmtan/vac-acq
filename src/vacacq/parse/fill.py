@@ -44,6 +44,17 @@ def utterance_fully_unparsed(tokens: pd.DataFrame) -> bool:
     return not _has_tag(content["part_of_speech"]).any()
 
 
+def keep_parsed_utterances(tokens: pd.DataFrame) -> pd.DataFrame:
+    """Keep utterances that have at least one parsed content token (POS + %gra)."""
+    if tokens.empty or "utterance_id" not in tokens.columns:
+        return tokens
+    gloss = tokens["gloss"].astype("string").str.strip().str.lower().fillna("")
+    content = ~gloss.isin(NONWORDS) & ~gloss.str.startswith("&")
+    parsed = content & _has_tag(tokens["part_of_speech"]) & _has_tag(tokens["gra_relation"])
+    keep_ids = tokens.loc[parsed, "utterance_id"].unique()
+    return tokens.loc[tokens["utterance_id"].isin(keep_ids)].copy()
+
+
 def _utterance_text(tokens: pd.DataFrame) -> str:
     return " ".join(str(g) for g in tokens.sort_values("token_order")["gloss"].tolist())
 

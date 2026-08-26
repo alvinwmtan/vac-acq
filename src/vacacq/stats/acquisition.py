@@ -146,17 +146,89 @@ def age_bins(bin_months: float = DEFAULT_BIN_MONTHS) -> np.ndarray:
     return np.arange(18.0, 72.0 + bin_months, bin_months)
 
 
+def assign_age_bins(ages, bin_months: float = DEFAULT_BIN_MONTHS) -> np.ndarray:
+    """Map ages in months onto the 18–69 closed 3-month grid (last bin is [69, 72))."""
+    a = np.asarray(ages, dtype=float)
+    b = np.floor((a - 18.0) / bin_months) * bin_months + 18.0
+    return np.clip(b, 18.0, 72.0 - bin_months).astype(int)
+
+
+def child_token_exposure(
+    tokens: pd.DataFrame,
+    *,
+    bin_months: float = DEFAULT_BIN_MONTHS,
+) -> pd.Series:
+    """Count of child tokens (any word) in each age bin.
+
+    This is the sampling density of the corpus, not VAC occupancy. Use it to
+    inverse-weight token CDFs so high-coverage ages do not dominate the shape.
+    """
+    if tokens.empty or "target_child_age" not in tokens.columns:
+        return pd.Series(dtype="int64")
+    kids = tokens
+    if "speaker_role" in kids.columns:
+        kids = kids.loc[kids["speaker_role"].isin(CHILD_ROLES)]
+    kids = kids.loc[kids["target_child_age"].notna()]
+    if kids.empty:
+        return pd.Series(dtype="int64")
+    bins = pd.Series(assign_age_bins(kids["target_child_age"], bin_months), index=kids.index)
+    return bins.value_counts().sort_index()
+
+
+def cumulative_bin_share(
+    counts: pd.Series,
+    bins: list[int],
+    exposure: pd.Series | None = None,
+) -> tuple[list[float], list[float]]:
+    """CDF over age bins, optionally inverse-weighted by overall token exposure.
+
+    Unweighted: mass in bin b is n_v(b). Weighted: mass is n_v(b) / N(b), the
+    verb's share of all child tokens in that bin. The CDF is the running sum
+    of those masses, renormalized to 1.
+    """
+    def _get(series: pd.Series | None, b: int) -> float:
+        if series is None or series.empty:
+            return 0.0
+        try:
+            idx = series.index.astype(int)
+        except (TypeError, ValueError):
+            idx = series.index
+        lookup = pd.Series(series.to_numpy(), index=idx)
+        if b not in lookup.index:
+            return 0.0
+        return float(lookup.loc[b])
+
+    weights: list[float] = []
+    for b in bins:
+        n = _get(counts, b)
+        if exposure is None:
+            weights.append(n)
+            continue
+        total = _get(exposure, b)
+        weights.append((n / total) if total > 0 else 0.0)
+    denom = float(sum(weights)) or 1.0
+    running = 0.0
+    shares: list[float] = []
+    for w in weights:
+        running += w
+        shares.append(running / denom)
+    return shares, weights
+
+
 def cumulative_age_curves(
     hits: pd.DataFrame,
     *,
     bin_months: float = DEFAULT_BIN_MONTHS,
     top_n: int = 8,
     order: pd.DataFrame | None = None,
+    exposure: pd.Series | None = None,
 ) -> pd.DataFrame:
     """Cumulative share of tokens by age bin.
 
     Schematic VL, VOL, VO, and VOO are always emitted when those hits exist.
     Locatives additionally get verb+preposition series (VL-to, VOL-off, …).
+    Pass ``exposure`` (child tokens of any word per bin) to inverse-weight the
+    CDF by sampling density.
     """
     kids = _schematic_hits(hits)
     if kids.empty:
@@ -165,10 +237,7 @@ def cumulative_age_curves(
     kids = kids.loc[kids["target_child_age"].notna()]
     if kids.empty:
         return kids
-    kids["age_bin"] = (
-        np.floor((kids["target_child_age"] - 18.0) / bin_months) * bin_months + 18.0
-    ).clip(lower=18.0, upper=72.0 - bin_months)
-    kids["age_bin"] = kids["age_bin"].astype(int)
+    kids["age_bin"] = assign_age_bins(kids["target_child_age"], bin_months)
     keep: set[str] = set()
     if order is not None and not order.empty:
         for vac, grp in order.groupby("vac"):
@@ -189,11 +258,10 @@ def cumulative_age_curves(
     rows = []
     for (vac, verb, item), grp in kids.groupby(["vac", "verb", "item"], dropna=False):
         counts = grp.groupby("age_bin").size()
-        total = float(counts.sum()) or 1.0
-        running = 0.0
+        shares, weights = cumulative_bin_share(counts, bins, exposure)
         grain = grp["grain"].iloc[0] if "grain" in grp.columns else ("schematic" if vac in SCHEMATIC else "prep")
-        for b in bins:
-            running += float(counts.get(b, 0))
+        n_tokens = int(counts.sum())
+        for b, share, weight in zip(bins, shares, weights):
             rows.append(
                 {
                     "vac": vac,
@@ -201,9 +269,10 @@ def cumulative_age_curves(
                     "item": item,
                     "grain": grain,
                     "age_months": b,
-                    "cumulative_share": running / total,
+                    "cumulative_share": share,
                     "bin_tokens": int(counts.get(b, 0)),
-                    "n_tokens": int(total),
+                    "bin_weight": weight,
+                    "n_tokens": n_tokens,
                 }
             )
     return pd.DataFrame(rows)
@@ -452,6 +521,7 @@ def run_acquisition(
     bin_months: float = DEFAULT_BIN_MONTHS,
     observation_spans: pd.DataFrame | None = None,
     n_boot: int = 1000,
+    cache_prefix: str = "acq",
 ) -> dict[str, pd.DataFrame]:
     first = child_first_ages(hits)
     order = acquisition_order(first)
@@ -486,9 +556,9 @@ def run_acquisition(
         out["order_correlation"] = compare_orders(order, morder)
     CACHE.mkdir(parents=True, exist_ok=True)
     for name, df in out.items():
-        df.to_csv(CACHE / f"acq_{name}.csv", index=False)
+        df.to_csv(CACHE / f"{cache_prefix}_{name}.csv", index=False)
     present = sorted(curves["vac"].dropna().unique().tolist()) if not curves.empty else []
-    (CACHE / "acq_status.json").write_text(
+    (CACHE / f"{cache_prefix}_status.json").write_text(
         json.dumps(
             {
                 **{k: int(len(v)) for k, v in out.items()},

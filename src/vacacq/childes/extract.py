@@ -359,26 +359,44 @@ def extract_vacs(
     if tokens.empty:
         return hits_to_frame([])
     tokens = _normalize_tags(tokens)
-    verb_utts = set(tokens.loc[tokens["part_of_speech"].isin(VERB_POS), "utterance_id"].tolist())
-    if verb_utts:
-        tokens = tokens.loc[tokens["utterance_id"].isin(verb_utts)]
-    frames = []
+    if "gra_relation" in tokens.columns:
+        parsed = tokens["gra_relation"].astype(str).str.strip().ne("") & tokens["gra_relation"].notna()
+        parsed_utts = tokens.loc[parsed, "utterance_id"]
+        tokens = tokens.loc[tokens["utterance_id"].isin(parsed_utts)]
+        if tokens.empty:
+            return hits_to_frame([])
+    verb_utts = tokens.loc[tokens["part_of_speech"].isin(VERB_POS), "utterance_id"]
+    tokens = tokens.loc[tokens["utterance_id"].isin(verb_utts)]
+    if tokens.empty:
+        return hits_to_frame([])
+    if "token_order" in tokens.columns:
+        tokens = tokens.sort_values(["utterance_id", "token_order"], kind="mergesort")
+    rows: list[dict] = []
+    meta_cols = [c for c in META_COLS if c in tokens.columns]
     for utt_id, grp in tokens.groupby("utterance_id", sort=False):
-        grp = grp.sort_values("token_order") if "token_order" in grp.columns else grp
         if extractor == "ud":
             hits = extract_utterance_ud(grp, stratum=None, already_normalized=True, extras=extras)
         elif extractor == "s74":
             hits = extract_utterance_s74(grp, stratum=None)
         else:
             raise ValueError(extractor)
-        meta = {"utterance_id": utt_id}
-        for col in META_COLS:
-            if col in grp.columns:
-                meta[col] = grp[col].iloc[0]
-        frames.append(hits_to_frame(hits, meta))
-    if not frames:
-        return hits_to_frame([])
-    return pd.concat(frames, ignore_index=True)
+        if not hits:
+            continue
+        meta = {col: grp[col].iloc[0] for col in meta_cols}
+        for h in hits:
+            rows.append(
+                {
+                    "utterance_id": h.utterance_id,
+                    "verb": h.verb,
+                    "construction": h.construction,
+                    "preposition": h.preposition,
+                    "parse_source": h.parse_source,
+                    "extractor": h.extractor,
+                    "extra": h.extra,
+                    **meta,
+                }
+            )
+    return pd.DataFrame(rows) if rows else hits_to_frame([])
 
 
 def filter_hits_for_stratum(hits: pd.DataFrame, stratum: str) -> pd.DataFrame:
