@@ -12,6 +12,7 @@ from vacacq.stats.chapter7 import explode_strata, zipf_fit
 def test_parent_all_includes_parent_young():
     assert assign_strata("Mother", 24.0) == ["Parent Young", "Parent All"]
     assert assign_strata("Target_Child", 24.0) == ["Child I"]
+    assert assign_strata("Target_Child", 12.0) == ["Child I"]
     assert assign_strata("Target_Child", 48.0) == ["Child II"]
 
 
@@ -29,6 +30,19 @@ def test_s7_2_exclusions():
     tr = pd.DataFrame({"filename": ["Bernstein/Interview/foo.cha", "Brown/Adam/adam01.cha"]})
     kept = apply_s7_2_exclusions(tr, stratum="child")
     assert list(kept["filename"]) == ["Brown/Adam/adam01.cha"]
+
+
+def test_tokens_sql_age_units():
+    from vacacq.childes.fetch import _tokens_sql
+    from vacacq.childes.strata import AGE_MAX, AGE_MIN, DAYS_PER_MONTH
+
+    days = _tokens_sql(corpora=["Hall"])
+    months = _tokens_sql(corpora=["Hall"], age_unit="months")
+    none = _tokens_sql(corpora=["Hall"], age_unit="none")
+    assert f">= {AGE_MIN * DAYS_PER_MONTH}" in days
+    assert f">= {AGE_MIN} AND t.target_child_age < {AGE_MAX}" in months
+    assert "target_child_age >=" not in none
+    assert "Hall" in days
 
 
 def test_explode_parent_strata():

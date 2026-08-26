@@ -1,1 +1,0 @@
-HTTPSConnectionPool(host='redivis.com', port=443): Max retries exceeded with url: /api/v1/queries (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x118cfb5c0>: Failed to resolve 'redivis.com' (Name or service not known: redivis.com using 1 resolver(s))"))

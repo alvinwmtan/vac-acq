@@ -1,6 +1,9 @@
 {
-  "n_utterances_filled": 1,
-  "n_partial_missing_left_unparsed": 0,
+  "n_utterances_filled": 0,
+  "n_partial_missing_left_unparsed": 68,
   "batchalign2_cli": false,
-  "stanza_used": true
+  "stanza_used": true,
+  "corpora": [
+    "Bliss"
+  ]
 }

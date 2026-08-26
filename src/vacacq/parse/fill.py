@@ -193,6 +193,11 @@ def fill_unparsed(
                 "n_partial_missing_left_unparsed": n_skipped_partial,
                 "batchalign2_cli": batchalign2_available(),
                 "stanza_used": use_stanza,
+                "corpora": (
+                    sorted(out["corpus_name"].dropna().astype(str).unique().tolist())
+                    if "corpus_name" in out.columns
+                    else []
+                ),
             },
             indent=2,
         ),

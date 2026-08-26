@@ -10,7 +10,12 @@ from vacacq import CACHE
 from vacacq.childes.access import DB_VERSION, REDIVIS_TAG, redivis_token_present
 from vacacq.childes.coverage import audit_coverage
 from vacacq.childes.extract import extract_vacs
-from vacacq.childes.fetch import load_analysis_tokens
+from vacacq.childes.fetch import (
+    corpus_fetch_diag,
+    list_english_corpora,
+    load_analysis_tokens,
+    load_corpora_tokens,
+)
 from vacacq.eval.scoring import expand_ranking_items, score_track
 from vacacq.parse.fill import fill_unparsed, sanity_check_parsed_sample
 from vacacq.qc.gold import extract_ud_treebank, write_qc_report
@@ -33,22 +38,105 @@ def _cmd_coverage(_args: argparse.Namespace) -> int:
 
 
 def _cmd_parse_fill(args: argparse.Namespace) -> int:
-    tokens = load_analysis_tokens(args.tokens, limit=args.limit, cache=args.cache)
-    if tokens.empty:
-        print("No tokens to fill. Provide --tokens parquet/csv or Redivis access.")
-        return 1
+    import pandas as pd
+
+    from vacacq.parse.fill import batchalign2_available
+
+    out = Path(args.out) if args.out else CACHE / "tokens_filled.parquet"
+    CACHE.mkdir(parents=True, exist_ok=True)
     nlp = None
-    if args.sanity:
+    if args.sanity or not args.skip_stanza:
         import stanza
 
         nlp = stanza.Pipeline(lang="en", processors="tokenize,pos,lemma,depparse", verbose=False)
-        report = sanity_check_parsed_sample(tokens, nlp, n=args.sanity_n)
-        print(json.dumps(report, indent=2))
-    filled = fill_unparsed(tokens, nlp=nlp, use_stanza=not args.skip_stanza)
-    out = Path(args.out) if args.out else CACHE / "tokens_filled.parquet"
-    CACHE.mkdir(parents=True, exist_ok=True)
-    filled.to_parquet(out, index=False)
-    print(f"wrote {out} ({len(filled)} tokens)")
+    if args.sanity:
+        sample = load_analysis_tokens(args.tokens, limit=args.limit, cache=args.cache)
+        if sample.empty:
+            print("No tokens for sanity check. Provide --tokens parquet/csv or Redivis access.")
+            return 1
+        print(json.dumps(sanity_check_parsed_sample(sample, nlp, n=args.sanity_n), indent=2))
+
+    if args.tokens:
+        tokens = load_analysis_tokens(args.tokens, limit=args.limit, cache=args.cache)
+        if tokens.empty:
+            print("No tokens to fill. Provide --tokens parquet/csv or Redivis access.")
+            return 1
+        filled = fill_unparsed(tokens, nlp=nlp, use_stanza=not args.skip_stanza)
+        filled.to_parquet(out, index=False)
+        print(f"wrote {out} ({len(filled)} tokens)")
+        return 0
+
+    corpora = args.corpora or list_english_corpora()
+    existing = None
+    have: set[str] = set()
+    if out.exists() and not args.force:
+        existing = pd.read_parquet(out)
+        if "corpus_name" in existing.columns:
+            have = set(existing["corpus_name"].dropna().astype(str))
+            print(f"already filled {len(have)} corpora", flush=True)
+        else:
+            print("existing tokens_filled has no corpus_name; replacing after fill", flush=True)
+            existing = None
+    elif args.force:
+        print("force: refilling all corpora", flush=True)
+
+    status_path = CACHE / "parse_fill_status.json"
+    prev = json.loads(status_path.read_text(encoding="utf-8")) if status_path.exists() else {}
+    n_filled = 0 if args.force else int(prev.get("n_utterances_filled") or 0)
+    n_partial = 0 if args.force else int(prev.get("n_partial_missing_left_unparsed") or 0)
+    added = []
+    empty = []
+    for corpus in corpora:
+        if corpus in have:
+            print(f"keep {corpus}", flush=True)
+            continue
+        print(f"fetch {corpus}", flush=True)
+        tokens = load_corpora_tokens([corpus], force=args.force)
+        if tokens.empty:
+            err = CACHE / "redivis_error.txt"
+            detail = f" ({err.read_text(encoding='utf-8').strip()})" if err.exists() else ""
+            diag = corpus_fetch_diag(corpus)
+            empty.append(corpus)
+            print(f"empty {corpus}{detail} diag={diag}", flush=True)
+            continue
+        print(f"fill {corpus} ({len(tokens)} tokens)", flush=True)
+        filled = fill_unparsed(tokens, nlp=nlp, use_stanza=not args.skip_stanza)
+        filled.to_parquet(CACHE / f"tokens_filled_{corpus}.parquet", index=False)
+        added.append(filled)
+        have.add(corpus)
+        cur = json.loads(status_path.read_text(encoding="utf-8")) if status_path.exists() else {}
+        n_filled += int(cur.get("n_utterances_filled") or 0)
+        n_partial += int(cur.get("n_partial_missing_left_unparsed") or 0)
+
+    if added:
+        merged = pd.concat(([existing] if existing is not None else []) + added, ignore_index=True)
+        tmp = out.with_suffix(".parquet.tmp")
+        merged.to_parquet(tmp, index=False)
+        tmp.replace(out)
+        print(f"wrote {out} ({len(merged)} tokens)", flush=True)
+    elif existing is not None:
+        print(f"no new corpora; {out} unchanged", flush=True)
+    else:
+        print("No tokens to fill. Provide --tokens parquet/csv or Redivis access.")
+        return 1
+
+    (CACHE / "parse_fill_status.json").write_text(
+        json.dumps(
+            {
+                "n_utterances_filled": n_filled,
+                "n_partial_missing_left_unparsed": n_partial,
+                "batchalign2_cli": batchalign2_available(),
+                "stanza_used": not args.skip_stanza,
+                "corpora": sorted(have),
+                "n_corpora": len(have),
+                "empty_corpora": empty,
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    if empty:
+        print(f"empty corpora: {empty}", flush=True)
     return 0
 
 
@@ -306,6 +394,8 @@ def build_parser() -> argparse.ArgumentParser:
     pf.add_argument("--skip-stanza", action="store_true")
     pf.add_argument("--sanity", action="store_true", help="POS agreement vs 2026.1 on a parsed sample")
     pf.add_argument("--sanity-n", type=int, default=25)
+    pf.add_argument("--corpora", nargs="*", help="Corpus names; default is all Eng-NA/Eng-UK from coverage")
+    pf.add_argument("--force", action="store_true", help="Refetch and refill even if a corpus is already in tokens_filled")
     pf.set_defaults(func=_cmd_parse_fill)
 
     ex = sub.add_parser("extract", help="Extract VAC instances")

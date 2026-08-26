@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 
 from vacacq import CACHE
-from vacacq.childes.strata import CHILD_ROLES, PARENT_ROLES
+from vacacq.childes.strata import AGE_MAX, AGE_MIN, CHILD_ROLES, PARENT_ROLES
 
 SCHEMATIC = ("VL", "VOL", "VO", "VOO")
 PREP_VACS = {"VL", "VOL"}
@@ -143,14 +143,13 @@ def parent_order(hits: pd.DataFrame, *, min_tokens: int = MIN_TOKENS) -> pd.Data
 
 
 def age_bins(bin_months: float = DEFAULT_BIN_MONTHS) -> np.ndarray:
-    return np.arange(18.0, 72.0 + bin_months, bin_months)
+    return np.arange(AGE_MIN, AGE_MAX + bin_months, bin_months)
 
 
 def assign_age_bins(ages, bin_months: float = DEFAULT_BIN_MONTHS) -> np.ndarray:
-    """Map ages in months onto the 18–69 closed 3-month grid (last bin is [69, 72))."""
     a = np.asarray(ages, dtype=float)
-    b = np.floor((a - 18.0) / bin_months) * bin_months + 18.0
-    return np.clip(b, 18.0, 72.0 - bin_months).astype(int)
+    b = np.floor((a - AGE_MIN) / bin_months) * bin_months + AGE_MIN
+    return np.clip(b, AGE_MIN, AGE_MAX - bin_months).astype(int)
 
 
 def child_token_exposure(

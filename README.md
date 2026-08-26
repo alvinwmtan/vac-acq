@@ -30,7 +30,7 @@ Pinned data: childes-db **2026.1** / Redivis `datapages.childes_db` **v1.4**. In
 | Stats | Zipf, ΔP<sub>cw</sub>, Kendall selectivity, WordNet betweenness, parent→child `lm`, cumulative vs MLU-w; split by `parse_source` |
 | Curves | Median first age and cumulative token share by age bin, **verb-level for VO/VOO** and **verb+prep for VL/VOL** |
 
-**Strata (unchanged from Ch. 7):** Child I 18–36 months; Child II 36–72; Parent Young = CDS to children &lt; 37 months; Parent All = CDS to children &lt; 72 months (Parent All includes Parent Young). Ages on Redivis are stored in **days**; the pipeline converts with `days / (365.25/12)`.
+**Strata:** Child I 12–36 months (Ch. 7 started at 18); Child II 36–72; Parent Young = CDS to children &lt; 37 months; Parent All = CDS to children &lt; 72 months (Parent All includes Parent Young). Analysis tokens are **12–72 months**. Ages on Redivis are stored in **days**; the pipeline converts with `days / (365.25/12)`.
 
 **Primary extractor (UD-native):** locative `obl`/`obl:lmod` or `compound:prt` with an S7.3 preposition; `obj`/`iobj` for VOL/VO/VOO. POS is lowercase UD (`verb`, `adp`); `%gra` is CHAT-style (`OBJ`, `COMPOUND-PRT`) — both are normalized.
 

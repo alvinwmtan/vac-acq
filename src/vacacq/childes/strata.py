@@ -13,10 +13,12 @@ PARENT_ROLES = {"Mother", "Father"}
 DAYS_PER_MONTH = 365.25 / 12
 
 # months
-CHILD_I = (18.0, 36.0)
-CHILD_II = (36.0, 72.0)
+AGE_MIN = 12.0
+AGE_MAX = 72.0
+CHILD_I = (AGE_MIN, 36.0)
+CHILD_II = (36.0, AGE_MAX)
 PARENT_YOUNG_MAX = 37.0
-PARENT_ALL_MAX = 72.0
+PARENT_ALL_MAX = AGE_MAX
 
 
 def age_to_months(age: float | None) -> float | None:
