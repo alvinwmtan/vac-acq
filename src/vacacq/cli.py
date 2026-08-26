@@ -59,6 +59,14 @@ def _cmd_extract(args: argparse.Namespace) -> int:
         return 1
     if args.subset == "s7_2":
         tokens = tokens.loc[tokens["in_s7_2"]].copy()
+    if args.skip_unparsed:
+        from vacacq.childes.coverage import drop_unparsed_corpora
+        from vacacq.parse.fill import keep_parsed_utterances
+
+        before = len(tokens)
+        tokens = drop_unparsed_corpora(tokens, min_rate=args.min_parsed_rate)
+        tokens = keep_parsed_utterances(tokens)
+        print(f"skip-unparsed: {before} → {len(tokens)} tokens")
     hits = extract_vacs(tokens, extractor=args.extractor)
     out = Path(args.out) if args.out else CACHE / f"hits_{args.extractor}.parquet"
     CACHE.mkdir(parents=True, exist_ok=True)
@@ -97,46 +105,134 @@ def _cmd_qc(args: argparse.Namespace) -> int:
     return 0
 
 
-def _cmd_curves(args: argparse.Namespace) -> int:
+def _curve_corpora(args: argparse.Namespace) -> list[str]:
+    from vacacq.childes.coverage import parsed_corpus_names
+
+    if args.corpora:
+        names = list(args.corpora)
+    elif args.subset == "all":
+        names = sorted(parsed_corpus_names(min_rate=args.min_parsed_rate) or [])
+        if not names:
+            raise SystemExit("No parsed corpora in coverage. Run `vacacq coverage` first.")
+    else:
+        names = ["Brown", "Manchester", "Wells", "Hall", "Belfast", "Brent", "NewEngland"]
+    if args.skip_unparsed:
+        allowed = parsed_corpus_names(min_rate=args.min_parsed_rate)
+        if allowed:
+            skipped = [c for c in names if c not in allowed]
+            names = [c for c in names if c in allowed]
+            if skipped:
+                print(f"skipping unparsed corpora: {skipped}")
+    cov_path = CACHE / "coverage.csv"
+    if cov_path.exists() and names:
+        import pandas as pd
+
+        cov = pd.read_csv(cov_path)
+        size = {str(r.corpus_name): int(r.n_tokens) for r in cov.itertuples()}
+        names = sorted(names, key=lambda c: size.get(c, 0))
+    return names
+
+
+def _extract_corpora(
+    corpora: list[str],
+    *,
+    subset: str,
+    skip_unparsed: bool,
+    min_parsed_rate: float,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Fetch, extract, and cache per corpus. Returns (hits, observation_spans)."""
     import pandas as pd
 
+    from vacacq.childes.coverage import drop_unparsed_corpora
     from vacacq.childes.extract import extract_vacs
     from vacacq.childes.fetch import load_corpora_tokens
     from vacacq.childes.strata import CHILD_ROLES, PARENT_ROLES
+    from vacacq.parse.fill import keep_parsed_utterances
+    from vacacq.stats.acquisition import child_observation_spans
+
+    hit_frames: list[pd.DataFrame] = []
+    span_frames: list[pd.DataFrame] = []
+    roles = tuple(sorted(CHILD_ROLES | PARENT_ROLES))
+    for corpus in corpora:
+        hits_path = CACHE / f"hits_{corpus}.parquet"
+        try:
+            tok = load_corpora_tokens([corpus], roles=roles)
+        except RuntimeError as exc:
+            print(f"{corpus}: {exc}")
+            continue
+        if tok.empty:
+            print(f"{corpus}: no tokens")
+            continue
+        if subset == "s7_2" and "in_s7_2" in tok.columns:
+            tok = tok.loc[tok["in_s7_2"]].copy()
+        if skip_unparsed:
+            tok = drop_unparsed_corpora(tok, min_rate=min_parsed_rate)
+            tok = keep_parsed_utterances(tok)
+        if tok.empty:
+            print(f"{corpus}: no parsed tokens after filters")
+            continue
+        if hits_path.exists():
+            hits = pd.read_parquet(hits_path)
+            print(f"cache hit hits_{corpus}.parquet ({len(hits)} hits)")
+        else:
+            print(f"extracting {corpus} ({len(tok)} tokens) …", flush=True)
+            hits = extract_vacs(tok, extractor="ud", extras=False)
+            CACHE.mkdir(parents=True, exist_ok=True)
+            hits.to_parquet(hits_path, index=False)
+            print(f"wrote {hits_path} ({len(hits)} hits)", flush=True)
+        if not hits.empty:
+            hit_frames.append(hits)
+        child_tok = tok.loc[tok["speaker_role"].isin(CHILD_ROLES)] if "speaker_role" in tok.columns else tok
+        spans = child_observation_spans(child_tok)
+        if not spans.empty:
+            span_frames.append(spans)
+        del tok
+    hits = pd.concat(hit_frames, ignore_index=True) if hit_frames else pd.DataFrame()
+    spans = pd.concat(span_frames, ignore_index=True) if span_frames else pd.DataFrame()
+    if not spans.empty and "child_id" in spans.columns:
+        spans = (
+            spans.groupby("child_id", dropna=False)
+            .agg(
+                first_obs=("first_obs", "min"),
+                last_obs=("last_obs", "max"),
+                **({"child_name": ("child_name", "first")} if "child_name" in spans.columns else {}),
+            )
+            .reset_index()
+        )
+    return hits, spans
+
+
+def _cmd_curves(args: argparse.Namespace) -> int:
+    import pandas as pd
 
     if args.hits:
         hits = pd.read_parquet(args.hits) if args.hits.endswith(".parquet") else pd.read_csv(args.hits)
-        cached = []
-        if "corpus_name" in hits.columns:
-            cached = [
-                c
-                for c in hits["corpus_name"].dropna().astype(str).unique()
-                if (CACHE / f"tokens_{c}.parquet").exists()
-            ]
-        if not cached:
-            cached = [c for c in args.corpora if (CACHE / f"tokens_{c}.parquet").exists()]
-        tokens = load_corpora_tokens(cached, roles=tuple(sorted(CHILD_ROLES))) if cached else pd.DataFrame()
+        corpora = _curve_corpora(args) if args.corpora else (
+            sorted(hits["corpus_name"].dropna().astype(str).unique()) if "corpus_name" in hits.columns else []
+        )
+        _, spans = _extract_corpora(
+            [c for c in corpora if (CACHE / f"tokens_{c}.parquet").exists()],
+            subset=args.subset,
+            skip_unparsed=args.skip_unparsed,
+            min_parsed_rate=args.min_parsed_rate,
+        )
+        print(f"hits: {len(hits)}; observation spans: {len(spans)} children")
     else:
-        tokens = load_corpora_tokens(args.corpora, roles=tuple(sorted(CHILD_ROLES | PARENT_ROLES)))
-        if tokens.empty:
-            print("No tokens. Provide --hits or Redivis access.")
+        corpora = _curve_corpora(args)
+        print(f"corpora ({len(corpora)}): {', '.join(corpora)}")
+        hits, spans = _extract_corpora(
+            corpora,
+            subset=args.subset,
+            skip_unparsed=args.skip_unparsed,
+            min_parsed_rate=args.min_parsed_rate,
+        )
+        if hits.empty:
+            print("No tokens/hits. Provide --hits or Redivis access.")
             return 1
-        if "in_s7_2" in tokens.columns:
-            tokens = tokens.loc[tokens["in_s7_2"]].copy()
-        hits = extract_vacs(tokens, extractor="ud", extras=False)
+        out_hits = CACHE / ("hits_curves_all.parquet" if args.subset == "all" else "hits_curves.parquet")
         CACHE.mkdir(parents=True, exist_ok=True)
-        hits.to_parquet(CACHE / "hits_curves.parquet", index=False)
-        print(f"extracted {len(hits)} hits from {len(tokens)} tokens")
-
-    spans = None
-    if tokens is not None and not tokens.empty:
-        if "in_s7_2" in tokens.columns:
-            span_src = tokens.loc[tokens["in_s7_2"]].copy()
-        else:
-            span_src = tokens
-        from vacacq.stats.acquisition import child_observation_spans
-
-        spans = child_observation_spans(span_src)
+        hits.to_parquet(out_hits, index=False)
+        print(f"extracted {len(hits)} hits from {len(corpora)} corpora → {out_hits}")
         print(f"observation spans: {len(spans)} children")
 
     ranking = None
@@ -152,8 +248,17 @@ def _cmd_curves(args: argparse.Namespace) -> int:
             frames.append(out["ranking"])
         ranking = pd.concat(frames, ignore_index=True) if frames else None
 
+    prefix = "acq"
+    if args.subset == "all":
+        prefix = "acq_all_parsed" if args.skip_unparsed else "acq_all"
+    elif args.skip_unparsed:
+        prefix = "acq_parsed"
     tables = run_acquisition(
-        hits, ranking, bin_months=args.bin_months, observation_spans=spans
+        hits,
+        ranking,
+        bin_months=args.bin_months,
+        observation_spans=spans,
+        cache_prefix=prefix,
     )
     for name, df in tables.items():
         print(f"{name}: {len(df)} rows")
@@ -209,6 +314,12 @@ def build_parser() -> argparse.ArgumentParser:
     ex.add_argument("--extractor", choices=("ud", "s74"), default="ud")
     ex.add_argument("--subset", choices=("all", "s7_2"), default="s7_2")
     ex.add_argument("--out")
+    ex.add_argument(
+        "--skip-unparsed",
+        action="store_true",
+        help="Drop zero-parse corpora and fully unparsed utterances",
+    )
+    ex.add_argument("--min-parsed-rate", type=float, default=0.0)
     ex.set_defaults(func=_cmd_extract)
 
     st = sub.add_parser("stats", help="Chapter 7 Zipf / ΔP / parent–child stats")
@@ -235,16 +346,33 @@ def build_parser() -> argparse.ArgumentParser:
     )
     cu.add_argument("--hits", help="Existing VAC hits parquet/csv (skips extract)")
     cu.add_argument(
+        "--subset",
+        choices=("s7_2", "all"),
+        default="s7_2",
+        help="s7_2: Ellis Table S7.2 files only. all: every Eng-NA/Eng-UK corpus listed in --corpora",
+    )
+    cu.add_argument(
         "--corpora",
         nargs="*",
-        default=["Brown", "Manchester", "Wells", "Hall", "Belfast", "Brent", "NewEngland"],
-        help="S7.2 corpora to fetch if --hits is omitted",
+        default=None,
+        help="Corpora to fetch. Default: S7.2 starter list, or all parsed corpora with --subset all",
     )
     cu.add_argument("--ranking", help="BabyLM ranking CSV from `vacacq eval`")
     cu.add_argument("--score-models", action="store_true", help="Score GPT-2 and DistilBERT epoch subsets")
     cu.add_argument("--gpt2-epochs", type=int, nargs="*", default=[1, 6, 12, 18, 24])
     cu.add_argument("--distilbert-epochs", type=int, nargs="*", default=[1, 15, 30, 45, 60])
     cu.add_argument("--bin-months", type=float, default=3.0)
+    cu.add_argument(
+        "--skip-unparsed",
+        action="store_true",
+        help="Drop zero-parse corpora and fully unparsed utterances",
+    )
+    cu.add_argument(
+        "--min-parsed-rate",
+        type=float,
+        default=0.0,
+        help="With --skip-unparsed, keep corpora with parsed_rate above this (default: skip only 0%%)",
+    )
     cu.set_defaults(func=_cmd_curves)
     return p
 

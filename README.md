@@ -112,6 +112,11 @@ uv run vacacq curves --corpora Brown Wells Belfast --bin-months 3
 # Reuse extracted hits
 uv run vacacq curves --hits data/cache/hits_curves.parquet --bin-months 3
 
+# Same, but skip zero-parse corpora and fully unparsed utterances
+uv run vacacq curves --hits data/cache/hits_curves.parquet --skip-unparsed
+# Optional: also drop sparse parses (Cruttenden is ~9%)
+# uv run vacacq curves --hits data/cache/hits_curves.parquet --skip-unparsed --min-parsed-rate 0.5
+
 # Child curves + score model epoch subsets
 uv run vacacq curves --hits data/cache/hits_curves.parquet --score-models \
   --gpt2-epochs 1 6 12 18 24 \
@@ -122,7 +127,7 @@ uv run vacacq curves --hits data/cache/hits_curves.parquet \
   --ranking data/cache/babylm_gpt2_100m_ranking.csv
 ```
 
-Tables written under `data/cache/`: `acq_child_order.csv`, `acq_child_age_curves.csv`, `acq_parent_order.csv`, and (if models were scored) `acq_model_order.csv`, `acq_model_curves.csv`.
+Tables written under `data/cache/`: `acq_child_order.csv`, `acq_child_age_curves.csv`, `acq_parent_order.csv`, and (if models were scored) `acq_model_order.csv`, `acq_model_curves.csv`. With `--skip-unparsed` the same tables are written as `acq_parsed_*.csv`.
 
 ### Common flags
 

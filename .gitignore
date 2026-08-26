@@ -221,3 +221,4 @@ __marimo__/
 # Misc
 **/.DS_Store
 references/
+**.parquet

@@ -5,7 +5,7 @@ import pytest
 from fixtures import tokens
 from vacacq.childes.strata import assign_strata, apply_s7_2_exclusions, is_s7_2_corpus
 from vacacq.eval.scoring import expand_ranking_items, spearman_with_ci
-from vacacq.parse.fill import annotate_existing_parses, fill_unparsed, utterance_fully_unparsed
+from vacacq.parse.fill import annotate_existing_parses, fill_unparsed, keep_parsed_utterances, utterance_fully_unparsed
 from vacacq.stats.chapter7 import explode_strata, zipf_fit
 
 
@@ -89,6 +89,27 @@ def test_parse_fill_skips_retraces_and_does_not_overwrite():
     assert pd.isna(filled.loc[filled["gloss"] == "home", "part_of_speech"].iloc[0]) or filled.loc[
         filled["gloss"] == "home", "part_of_speech"
     ].iloc[0] in {"", None}
+
+
+def test_keep_parsed_utterances_drops_fully_unparsed():
+    parsed = tokens(
+        [
+            {"gloss": "she", "part_of_speech": "PRON", "gra_head": 2, "gra_relation": "nsubj"},
+            {"gloss": "go", "part_of_speech": "VERB", "gra_head": 0, "gra_relation": "root"},
+        ],
+        utterance_id="parsed",
+    )
+    unparsed = tokens(
+        [
+            {"gloss": "she", "part_of_speech": "", "gra_head": None, "gra_relation": ""},
+            {"gloss": "go", "part_of_speech": "", "gra_head": None, "gra_relation": ""},
+        ],
+        utterance_id="bare",
+    )
+    for col in ("part_of_speech", "gra_relation"):
+        unparsed[col] = pd.NA
+    out = keep_parsed_utterances(pd.concat([parsed, unparsed], ignore_index=True))
+    assert set(out["utterance_id"]) == {"parsed"}
 
 
 def test_parse_fill_writes_stanza_on_fully_unparsed(monkeypatch):
@@ -336,3 +357,20 @@ def test_right_censored_times_mark_nonproducers():
     assert censored["event"] == 0
     assert censored["time"] == 48.0
     assert int(times["event"].sum()) == 2
+
+
+def test_exposure_weighted_cdf_downweights_dense_bins():
+    from vacacq.stats.acquisition import cumulative_bin_share
+
+    counts = pd.Series({18: 1, 36: 1})
+    bins = [18, 21, 24, 27, 30, 33, 36]
+    unweighted, _ = cumulative_bin_share(counts, bins, None)
+    assert unweighted[0] == pytest.approx(0.5)
+    assert unweighted[-1] == pytest.approx(1.0)
+    exposure = pd.Series({18: 100, 21: 100, 24: 100, 27: 100, 30: 100, 33: 100, 36: 10})
+    weighted, weights = cumulative_bin_share(counts, bins, exposure)
+    assert weights[0] == pytest.approx(0.01)
+    assert weights[-1] == pytest.approx(0.1)
+    assert weighted[0] == pytest.approx(0.01 / 0.11)
+    assert weighted[-1] == pytest.approx(1.0)
+    assert weighted[0] < unweighted[0]
