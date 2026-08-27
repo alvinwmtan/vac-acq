@@ -120,6 +120,36 @@ def acquisition_order(first_ages: pd.DataFrame, *, min_children: int | None = No
     return summary.sort_values(["vac", "aoa_rank", "verb"])
 
 
+MIN_ADULT_SHARE = 0.50
+
+
+def adult_frame_share(
+    hits: pd.DataFrame,
+    *,
+    min_tokens: int = MIN_TOKENS,
+) -> pd.DataFrame:
+    """Adult schematic-VAC share: n(verb, frame) / n(verb) over non-child hits."""
+    if hits.empty:
+        return hits
+    work = hits
+    if "extra" in work.columns:
+        work = work.loc[~work["extra"].fillna(False)]
+    work = work.loc[work["construction"].isin(SCHEMATIC)]
+    if "speaker_role" in work.columns:
+        work = work.loc[~work["speaker_role"].isin(CHILD_ROLES)]
+    if work.empty:
+        return work
+    work = work.copy()
+    work["verb"] = work["verb"].astype(str).str.lower()
+    n_frame = work.groupby(["verb", "construction"]).size().rename("n_frame")
+    n_verb = work.groupby("verb").size().rename("n_verb")
+    out = n_frame.reset_index().merge(n_verb.reset_index(), on="verb")
+    out["share"] = out["n_frame"] / out["n_verb"]
+    if min_tokens:
+        out = out.loc[out["n_verb"] >= min_tokens]
+    return out.sort_values(["construction", "share", "n_frame"], ascending=[True, False, False])
+
+
 def parent_order(hits: pd.DataFrame, *, min_tokens: int = MIN_TOKENS) -> pd.DataFrame:
     """CDS input order: rank by token frequency (and median age of occurrence)."""
     cds = _schematic_hits(hits)
@@ -305,38 +335,60 @@ def right_censored_times(
     spans: pd.DataFrame,
     items: pd.DataFrame,
 ) -> pd.DataFrame:
-    """One row per child × item: event at first production, else censored at last observation."""
+    """One row per child × item: event at first production, else censored at last observation.
+
+    ``entry`` is first observation (delayed entry / left truncation). A first use
+    in that first session is left-censored: AoA ≤ first_obs, counted at entry.
+    """
     if first_ages.empty or spans.empty or items.empty:
         return pd.DataFrame()
     item_cols = [c for c in ("vac", "verb", "item", "construction", "grain") if c in items.columns]
     catalog = items[item_cols].drop_duplicates()
-    children = spans.loc[spans["last_obs"].notna(), ["child_id", "last_obs"]].drop_duplicates("child_id")
+    span_cols = [c for c in ("child_id", "first_obs", "last_obs") if c in spans.columns]
+    children = spans.loc[spans["last_obs"].notna(), span_cols].drop_duplicates("child_id")
     grid = catalog.merge(children, how="cross")
     events = first_ages[["child_id", "item", "first_age"]].drop_duplicates(["child_id", "item"])
     out = grid.merge(events, on=["child_id", "item"], how="left")
+    if "first_obs" in out.columns:
+        out["entry"] = out["first_obs"]
+    else:
+        out["entry"] = 0.0
+    out["entry"] = out["entry"].fillna(0.0)
     produced = out["first_age"].notna()
     out["event"] = produced.astype(int)
     out["time"] = np.where(produced, out["first_age"], out["last_obs"])
-    return out
+    left = produced & (out["time"] <= out["entry"])
+    out["left_censored"] = left.astype(int)
+    out.loc[left, "time"] = out.loc[left, "entry"]
+    return out.loc[out["time"] >= out["entry"]].copy()
 
 
-def kaplan_meier_curve(time: np.ndarray, event: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
-    """Event times and Kaplan–Meier survival S(t) = P(AoA > t)."""
+def kaplan_meier_curve(
+    time: np.ndarray,
+    event: np.ndarray,
+    entry: np.ndarray | None = None,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Event times and Kaplan–Meier survival S(t) = P(AoA > t).
+
+    ``entry`` is delayed-entry (left truncation): a child is at risk only after
+    their first observation.
+    """
     time = np.asarray(time, dtype=float)
     event = np.asarray(event, dtype=int)
-    ok = np.isfinite(time)
-    time, event = time[ok], event[ok]
+    if entry is None:
+        entry = np.zeros(time.shape, dtype=float)
+    else:
+        entry = np.asarray(entry, dtype=float)
+    ok = np.isfinite(time) & np.isfinite(entry) & (time >= entry)
+    time, event, entry = time[ok], event[ok], entry[ok]
     if time.size == 0:
         return np.array([]), np.array([])
-    order = np.argsort(time, kind="mergesort")
-    time, event = time[order], event[order]
     surv_t: list[float] = []
     surv_s: list[float] = []
     survival = 1.0
-    for t in np.unique(time):
-        at_t = time == t
-        deaths = int(event[at_t].sum())
-        n_risk = int((time >= t).sum())
+    for t in np.unique(time[event == 1]):
+        n_risk = int(np.sum((entry <= t) & (time >= t)))
+        deaths = int(np.sum((time == t) & (event == 1)))
         if deaths > 0 and n_risk > 0:
             survival *= 1.0 - deaths / n_risk
             surv_t.append(float(t))
@@ -346,9 +398,13 @@ def kaplan_meier_curve(time: np.ndarray, event: np.ndarray) -> tuple[np.ndarray,
     return np.asarray(surv_t), np.asarray(surv_s)
 
 
-def kaplan_meier_median(time: np.ndarray, event: np.ndarray) -> float:
+def kaplan_meier_median(
+    time: np.ndarray,
+    event: np.ndarray,
+    entry: np.ndarray | None = None,
+) -> float:
     """Smallest t with KM S(t) ≤ 0.5. NaN if the median is not reached."""
-    times, surv = kaplan_meier_curve(time, event)
+    times, surv = kaplan_meier_curve(time, event, entry)
     if times.size == 0:
         return float("nan")
     hit = np.flatnonzero(surv <= 0.5)
@@ -360,6 +416,7 @@ def kaplan_meier_median(time: np.ndarray, event: np.ndarray) -> float:
 def bootstrap_km_median_ci(
     time: np.ndarray,
     event: np.ndarray,
+    entry: np.ndarray | None = None,
     *,
     n_boot: int = 1000,
     seed: int = 0,
@@ -368,6 +425,10 @@ def bootstrap_km_median_ci(
     """Percentile CI for the KM median by resampling children."""
     time = np.asarray(time, dtype=float)
     event = np.asarray(event, dtype=int)
+    if entry is None:
+        entry = np.zeros(time.shape, dtype=float)
+    else:
+        entry = np.asarray(entry, dtype=float)
     n = time.size
     if n == 0:
         return float("nan"), float("nan")
@@ -375,7 +436,7 @@ def bootstrap_km_median_ci(
     meds = np.empty(n_boot, dtype=float)
     for i in range(n_boot):
         idx = rng.integers(0, n, n)
-        meds[i] = kaplan_meier_median(time[idx], event[idx])
+        meds[i] = kaplan_meier_median(time[idx], event[idx], entry[idx])
     finite = meds[np.isfinite(meds)]
     if finite.size < max(20, int(0.5 * n_boot)):
         lo = float(np.nanmin(finite)) if finite.size else float("nan")
@@ -398,9 +459,11 @@ def censored_aoa_summary(
     for (vac, verb, item), grp in times.groupby(["vac", "verb", "item"], dropna=False):
         time = grp["time"].to_numpy(dtype=float)
         event = grp["event"].to_numpy(dtype=int)
-        median = kaplan_meier_median(time, event)
-        lo, hi = bootstrap_km_median_ci(time, event, n_boot=n_boot, seed=seed)
-        times_km, surv = kaplan_meier_curve(time, event)
+        entry = grp["entry"].to_numpy(dtype=float) if "entry" in grp.columns else None
+        median = kaplan_meier_median(time, event, entry)
+        lo, hi = bootstrap_km_median_ci(time, event, entry, n_boot=n_boot, seed=seed)
+        times_km, surv = kaplan_meier_curve(time, event, entry)
+        n_left = int(grp["left_censored"].sum()) if "left_censored" in grp.columns else 0
         rows.append(
             {
                 "vac": vac,
@@ -409,6 +472,7 @@ def censored_aoa_summary(
                 "n_risk": int(len(grp)),
                 "n_event": int(event.sum()),
                 "n_censored": int((event == 0).sum()),
+                "n_left_censored": n_left,
                 "naive_median": float(grp.loc[grp["event"] == 1, "time"].median()) if int(event.sum()) else float("nan"),
                 "km_median": median,
                 "km_ci_low": lo,

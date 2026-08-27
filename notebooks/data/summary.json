@@ -1,0 +1,16 @@
+{
+  "n_children": 962,
+  "n_corpora": 61,
+  "n_tokens": 15275341,
+  "parse_source_tokens": {
+    "childesdb": 14452928,
+    "unparsed": 647012,
+    "stanza_gloss": 175401
+  },
+  "child_tokens": {
+    "VL": 51173,
+    "VOL": 31063,
+    "VO": 254606,
+    "VOO": 6049
+  }
+}

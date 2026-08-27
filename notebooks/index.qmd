@@ -1,0 +1,11 @@
+# Overview {#sec-overview}
+
+{{< include _caution.qmd >}}
+
+Schematic **VL, VOL, VO, and VOO** on English CHILDES from `tokens_filled.parquet` (childes-db 2026.1 gold parses plus Stanza-on-gloss fills). Remaining fully unparsed utterances are dropped.
+
+Each construction is shown with the eight most frequent child-produced verbs. Sampling-adjusted CDFs are inverse-weighted by total child tokens in each age bin so corpus coverage does not set the shape. First-production ages are Kaplan–Meier estimates with delayed entry and left-censoring at first child-speech session.
+
+Locative verb+preposition series are in the CSV tables under `data/`. Model epoch curves are not scored yet.
+
+See [Child acquisition curves](#sec-curves).
