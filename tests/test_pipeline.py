@@ -347,6 +347,7 @@ def test_right_censored_times_mark_nonproducers():
     spans = pd.DataFrame(
         {
             "child_id": ["a", "b", "c"],
+            "first_obs": [18.0, 18.0, 18.0],
             "last_obs": [40.0, 36.0, 48.0],
         }
     )
@@ -356,7 +357,56 @@ def test_right_censored_times_mark_nonproducers():
     censored = times.loc[times["child_id"] == "c"].iloc[0]
     assert censored["event"] == 0
     assert censored["time"] == 48.0
+    assert censored["entry"] == 18.0
     assert int(times["event"].sum()) == 2
+
+
+def test_km_delayed_entry_late_nonproducers_do_not_block_median():
+    from vacacq.stats.acquisition import kaplan_meier_median
+
+    # 3 of 5 early children produce at 24; 5 late-entering children never produce.
+    time = np.array([24, 24, 24, 60, 60, 60, 60, 60, 60, 60], dtype=float)
+    event = np.array([1, 1, 1, 0, 0, 0, 0, 0, 0, 0])
+    entry = np.array([18, 18, 18, 18, 18, 50, 50, 50, 50, 50], dtype=float)
+    naive = kaplan_meier_median(time, event)
+    delayed = kaplan_meier_median(time, event, entry)
+    assert np.isnan(naive)
+    assert delayed == 24.0
+
+
+def test_left_censored_first_session_use_is_marked():
+    from vacacq.stats.acquisition import right_censored_times
+
+    first = pd.DataFrame(
+        {"child_id": ["late"], "vac": ["VO"], "verb": ["get"], "item": ["VO|get"], "first_age": [48.0]}
+    )
+    spans = pd.DataFrame({"child_id": ["late"], "first_obs": [48.0], "last_obs": [60.0]})
+    items = pd.DataFrame({"vac": ["VO"], "verb": ["get"], "item": ["VO|get"]})
+    times = right_censored_times(first, spans, items)
+    row = times.iloc[0]
+    assert row["left_censored"] == 1
+    assert row["event"] == 1
+    assert row["time"] == 48.0
+    assert row["entry"] == 48.0
+
+
+def test_adult_frame_share_keeps_frame_specialists():
+    from vacacq.stats.acquisition import adult_frame_share, MIN_ADULT_SHARE
+
+    rows = []
+    for i in range(20):
+        rows.append({"verb": "go", "construction": "VL", "speaker_role": "Mother", "extra": False, "utterance_id": i})
+    for i in range(5):
+        rows.append({"verb": "go", "construction": "VO", "speaker_role": "Mother", "extra": False, "utterance_id": 100 + i})
+    for i in range(8):
+        rows.append({"verb": "put", "construction": "VOL", "speaker_role": "Mother", "extra": False, "utterance_id": 200 + i})
+    for i in range(12):
+        rows.append({"verb": "put", "construction": "VO", "speaker_role": "Mother", "extra": False, "utterance_id": 300 + i})
+    share = adult_frame_share(pd.DataFrame(rows), min_tokens=10)
+    go_vl = share.loc[(share["verb"] == "go") & (share["construction"] == "VL")].iloc[0]
+    assert go_vl["share"] >= MIN_ADULT_SHARE
+    put_vol = share.loc[(share["verb"] == "put") & (share["construction"] == "VOL")]
+    assert put_vol.empty or float(put_vol.iloc[0]["share"]) < MIN_ADULT_SHARE
 
 
 def test_exposure_weighted_cdf_downweights_dense_bins():

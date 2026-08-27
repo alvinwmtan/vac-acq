@@ -1,0 +1,4 @@
+- source: project
+  posit-connect-cloud:
+    - id: 01a042a6-2414-4d9d-a9ec-7f2ca3c759e6
+      url: https://connect.posit.cloud/alvinwmtan/content/01a042a6-2414-4d9d-a9ec-7f2ca3c759e6

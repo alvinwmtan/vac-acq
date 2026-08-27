@@ -739,16 +739,18 @@ export default function VacAcquisitionCurves() {{
       </Grid>
 
       <Stack gap={{8}}>
-        <H2>First production by child, right-censored</H2>
+        <H2>First production by child, left-truncated and right-censored</H2>
         <Text tone="secondary">
           Each small dot is one child&apos;s first observed use of that
-          verb+construction. Children who were recorded but never produced the
-          combination are treated as right-censored at their last parsed
-          child-speech session and are not plotted as dots. The large ink marker
-          is the Kaplan–Meier median age of acquisition; whiskers are a 95%
+          verb+construction. Children enter the risk set at their first
+          recorded child-speech session (left truncation). A first use in that
+          first session is left-censored (acquired at or before first
+          observation) and counted at entry. Children who never produced the
+          combination are right-censored at their last parsed child-speech
+          session and are not plotted as dots. The large ink marker is the
+          Kaplan–Meier median age of acquisition; whiskers are a 95%
           bootstrap CI. If the KM curve never falls to 50%, the median is not
           reached and a dashed arrow shows the lower bound (if any).
-          Late-entering children are still in the risk set (no left truncation).
         </Text>
       </Stack>
 
@@ -767,7 +769,8 @@ export default function VacAcquisitionCurves() {{
           last. The interval is a 95% bootstrap CI; a lower bound only means
           the median itself was not reached. Producers are children with an
           observed first use (n_event); never-producers are right-censored.
-          Source: data/cache/acq_filled_canvas_censored_aoa.csv.
+          Left truncation: children enter at first observation. Source:
+          data/cache/acq_filled_canvas_censored_aoa.csv.
         </Text>
       </Stack>
 

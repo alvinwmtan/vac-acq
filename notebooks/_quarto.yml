@@ -1,0 +1,25 @@
+project:
+  type: book
+
+book:
+  title: "VAC acquisition curves"
+  author: "Alvin Tan"
+  date: today
+  chapters:
+    - index.qmd
+    - 01-acquisition-curves.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    code-fold: show
+    df-print: paged
+
+execute:
+  freeze: auto
+  warning: false
+  message: false
+
+jupyter: python3

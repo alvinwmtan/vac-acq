@@ -222,3 +222,6 @@ __marimo__/
 **/.DS_Store
 references/
 **.parquet
+notebooks/_book/
+notebooks/.quarto/
+notebooks/*_files/

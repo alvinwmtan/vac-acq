@@ -1,0 +1,9 @@
+::: {.callout-important}
+## AI-generated — not for publication
+The code and prose in this book were written by an AI agent under human direction; not
+line-by-line verified; must not be published or cited as-is.
+:::
+::: {.callout-warning}
+## Preliminary & unvetted analysis
+Exploratory analyses of preliminary work; numbers not independently validated; check before use.
+:::

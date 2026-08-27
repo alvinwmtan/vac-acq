@@ -61,6 +61,14 @@ uv run pytest
 
 Outputs go to `data/cache/` (gitignored). Local token parquets skip Redivis.
 
+Acquisition-curve figures live in a Quarto book under `notebooks/`:
+
+```bash
+./notebooks/render.sh
+```
+
+HTML is written to `notebooks/_book/`. To publish the already-rendered book: `cd notebooks && quarto publish quarto-pub --no-render --no-prompt` (browser login on first publish).
+
 ## CLI
 
 All commands: `uv run vacacq <command>`.
