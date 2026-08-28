@@ -8,4 +8,4 @@ Each construction is shown with the eight most frequent child-produced verbs. Sa
 
 Locative verb+preposition series are in the CSV tables under `data/`. Model epoch curves are not scored yet.
 
-See [Child acquisition curves](#sec-curves) and the [BabyLM eval set](#sec-eval).
+See [Child acquisition curves](#sec-curves), the [BabyLM eval set](#sec-eval), and [eval-verb acquisition](#sec-eval-verbs).

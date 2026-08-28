@@ -55,7 +55,7 @@ Gold childes-db tags cover `{python} f"{gold:,}"` tokens; Stanza-on-gloss added 
 
 ::: {.callout-note}
 ## CDFs adjusted for sampling density
-Child tokens (any word) per 3-month bin range from `{python} f"{exp_lo:,}"` (`{python} exp_lo_age` mo) to `{python} f"{exp_hi:,}"` (`{python} exp_hi_age` mo); `{python} f"{exp_sum:,}"` child tokens between 18 and 72 months. Each verb's CDF uses verb-tokens / all-tokens in that bin, then renormalizes, so the shape tracks the word rather than how much CHILDES data happens to exist.
+Child tokens (any word) per 3-month bin range from `{python} f"{exp_lo:,}"` (`{python} exp_lo_age` mo) to `{python} f"{exp_hi:,}"` (`{python} exp_hi_age` mo); `{python} f"{exp_sum:,}"` child tokens between 12 and 72 months. Each verb's CDF uses verb-tokens / all-tokens in that bin, then renormalizes, so the shape tracks the word rather than how much CHILDES data happens to exist.
 :::
 
 | Construction | Child tokens |
@@ -89,8 +89,9 @@ for ax, vac in zip(axes.ravel(), VACS):
         row = sub.loc[sub.verb.eq(verb)].sort_values("age_months")
         ax.plot(row.age_months, row.cumulative_share * 100, label=verb)
     ax.set_title(TITLES[vac])
-    ax.set_xlim(18, 69)
+    ax.set_xlim(12, 69)
     ax.set_ylim(0, 100)
+    ax.set_xticks([12, 24, 36, 48, 60])
     ax.legend(fontsize=8, loc="lower right", frameon=False, ncol=2)
 axes[0, 0].set_ylabel("Cumulative weighted share (%)")
 axes[1, 0].set_ylabel("Cumulative weighted share (%)")
@@ -136,10 +137,10 @@ def plot_km(ax, vac):
             ax.annotate("", xy=(72, i), xytext=(lo, i),
                         arrowprops=dict(arrowstyle="->", color="black", lw=1.2, linestyle="--"))
     ax.set_yticks(range(len(verbs)), verbs)
-    ax.set_xlim(18, 72)
+    ax.set_xlim(12, 72)
     ax.set_ylim(len(verbs) - 0.6, -0.6)
     ax.set_title(TITLES[vac])
-    ax.set_xticks([18, 24, 36, 48, 60, 72])
+    ax.set_xticks([12, 24, 36, 48, 60, 72])
 ```
 
 ```{python}

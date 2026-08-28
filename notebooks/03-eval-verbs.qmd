@@ -1,0 +1,260 @@
+# Eval-verb acquisition {#sec-eval-verbs}
+
+{{< include _caution.qmd >}}
+
+```{python}
+#| label: setup
+#| echo: false
+from pathlib import Path
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+DATA = Path("data")
+META = pd.read_json(DATA / "summary.json", typ="series")
+CURVES = pd.read_csv(DATA / "eval_age_curves.csv")
+ORDER = pd.read_csv(DATA / "eval_order.csv")
+AOA = pd.read_csv(DATA / "eval_censored_aoa.csv")
+FIRST = pd.read_csv(DATA / "eval_first_ages.csv")
+VAC_CDF = pd.read_csv(DATA / "eval_vac_cdf.csv")
+VERB_CDF = pd.read_csv(DATA / "eval_verb_cdf.csv")
+ITEMS = pd.read_csv(DATA / "test_set.csv")
+
+TITLES = {
+    "VL": "VL intransitive locative",
+    "VOL": "VOL caused motion",
+    "VO": "VO transitive",
+    "VOO": "VOO ditransitive",
+}
+VACS = ["VL", "VOL", "VO", "VOO"]
+n_child = int(META["n_children"])
+n_corp = int(META["n_corpora"])
+n_verb = {c: int(ITEMS.loc[ITEMS.construction_type.eq(c), "verb"].nunique()) for c in VACS}
+
+plt.rcParams.update({
+    "axes.spines.top": False,
+    "axes.spines.right": False,
+    "figure.dpi": 120,
+    "font.size": 10,
+})
+```
+
+Same filled CHILDES sample as [acquisition curves](#sec-curves) (`{python} n_corp` corpora, `{python} n_child` children), restricted to the [eval-set](#sec-eval) verbs: `{python} n_verb['VL']` VL, `{python} n_verb['VOL']` VOL, `{python} n_verb['VO']` VO, `{python} n_verb['VOO']` VOO. Token CDFs are inverse-weighted by all child tokens per 3-month bin. First-production ages use delayed-entry Kaplan–Meier (left-censor at first child-speech session; never-producers right-censored at last session).
+
+The construction-level panel pools eval verbs: a child attains the construction at the first of those verbs, with the same censoring, and each 3-month hazard is events / children still at risk.
+
+## Sampling-adjusted CDFs
+
+Each 3-month bin is weighted by this verb's tokens divided by all child tokens (any word) in that bin, then accumulated and renormalized to 100%. Y-axis is cumulative weighted share (%).
+
+```{python}
+#| label: fig-eval-cdf
+#| fig-cap: "Sampling-adjusted cumulative token share by child age for eval-set verbs in each schematic VAC."
+#| fig-height: 8
+
+fig, axes = plt.subplots(2, 2, figsize=(10, 8), sharex=True, sharey=True)
+for ax, vac in zip(axes.ravel(), VACS):
+    order = ORDER.loc[ORDER.vac.eq(vac)].sort_values("n_tokens", ascending=False)
+    sub = CURVES.loc[CURVES.vac.eq(vac)]
+    for verb in order.verb:
+        row = sub.loc[sub.verb.eq(verb)].sort_values("age_months")
+        if row.empty:
+            continue
+        ax.plot(row.age_months, row.cumulative_share * 100, label=verb)
+    ax.set_title(TITLES[vac])
+    ax.set_xlim(12, 69)
+    ax.set_ylim(0, 100)
+    ax.set_xticks([12, 24, 36, 48, 60])
+    ax.legend(fontsize=8, loc="lower right", frameon=False, ncol=2)
+axes[0, 0].set_ylabel("Cumulative weighted share (%)")
+axes[1, 0].set_ylabel("Cumulative weighted share (%)")
+axes[1, 0].set_xlabel("Age (months)")
+axes[1, 1].set_xlabel("Age (months)")
+fig.tight_layout()
+```
+
+## First production by child, left-truncated and right-censored
+
+Each small dot is one child's first observed use of that verb+construction. Children enter the risk set at their first recorded child-speech session. A first use in that first session is left-censored and counted at entry. Children who never produced the combination are right-censored at their last parsed child-speech session and are not plotted as dots. The large marker is the Kaplan–Meier median age of acquisition; whiskers are a 95% bootstrap CI. If the KM curve never falls to 50%, a dashed arrow shows the lower bound (if any).
+
+```{python}
+#| echo: false
+
+def swarm_y(ages, y0, bin_w=0.45, spread=0.32):
+    keys = np.round(np.asarray(ages) / bin_w) * bin_w
+    y = np.full(len(ages), float(y0))
+    for k in np.unique(keys):
+        idx = np.flatnonzero(keys == k)
+        n = len(idx)
+        if n < 2:
+            continue
+        step = min(0.05, (spread * 2) / (n - 1))
+        y[idx] = y0 + (np.arange(n) - (n - 1) / 2) * step
+    return y
+
+
+def plot_km(ax, vac):
+    aoa = AOA.loc[AOA.vac.eq(vac)].sort_values("aoa_rank")
+    verbs = list(aoa.verb)
+    ages = FIRST.loc[FIRST.vac.eq(vac)]
+    for i, verb in enumerate(verbs):
+        dots = ages.loc[ages.verb.eq(verb), "first_age"].to_numpy()
+        ax.scatter(dots, swarm_y(dots, i), s=8, alpha=0.4, c="#2c7fb8", linewidths=0, zorder=2)
+        row = aoa.iloc[i]
+        km, lo, hi = row.km_median, row.km_ci_low, row.km_ci_high
+        if pd.notna(km) and pd.notna(lo) and pd.notna(hi):
+            ax.hlines(i, lo, hi, color="black", lw=1.6, zorder=3)
+            ax.vlines([lo, hi], i - 0.18, i + 0.18, color="black", lw=1.6, zorder=3)
+            ax.scatter([km], [i], s=36, c="black", zorder=4)
+        elif pd.notna(lo):
+            ax.annotate("", xy=(72, i), xytext=(lo, i),
+                        arrowprops=dict(arrowstyle="->", color="black", lw=1.2, linestyle="--"))
+    ax.set_yticks(range(len(verbs)), verbs)
+    ax.set_xlim(12, 72)
+    ax.set_ylim(len(verbs) - 0.6, -0.6)
+    ax.set_title(TITLES[vac])
+    ax.set_xticks([12, 24, 36, 48, 60, 72])
+```
+
+```{python}
+#| label: fig-eval-km
+#| fig-cap: "First observed production age (dots) for eval-set verbs, with Kaplan–Meier median and 95% bootstrap CI. Verbs ordered by earliest KM median. Delayed-entry KM; never-producers right-censored."
+#| fig-height: 10
+
+fig, axes = plt.subplots(2, 2, figsize=(10, 10), sharex=True)
+for ax, vac in zip(axes.ravel(), VACS):
+    plot_km(ax, vac)
+axes[1, 0].set_xlabel("Age (months)")
+axes[1, 1].set_xlabel("Age (months)")
+fig.tight_layout()
+```
+
+## Construction-level first production
+
+One curve per schematic VAC. The event is a child's first production of **any** eval-set verb in that construction. Delayed entry at first child-speech session; left-censor if that first use is in the first session; right-censor never-producers at last session. On each 3-month bin the hazard is $n_{\mathrm{event}} / n_{\mathrm{risk}}$ (inverse-weighted by how many children are still at risk at that age). The plotted CDF is $F(t) = 1 - S(t)$. Curves need not reach 1: some children never produce an eval verb in that frame while observed.
+
+```{python}
+#| label: fig-eval-vac-cdf
+#| fig-cap: "Discrete Kaplan–Meier CDF of age at first production of any eval-set verb, one curve per construction. Bin hazard = events / children at risk."
+#| fig-height: 4.5
+
+fig, ax = plt.subplots(figsize=(8, 4.5))
+for vac in VACS:
+    row = VAC_CDF.loc[VAC_CDF.vac.eq(vac)].sort_values("age_months")
+    ax.plot(row.age_months, row.cdf * 100, label=TITLES[vac])
+ax.set_xlim(12, 69)
+ax.set_ylim(0, 100)
+ax.set_xticks([12, 24, 36, 48, 60])
+ax.set_xlabel("Age (months)")
+ax.set_ylabel("Children with first production (%)")
+ax.legend(frameon=False, loc="lower right")
+fig.tight_layout()
+```
+
+```{python}
+#| label: tbl-vac-cdf
+#| echo: false
+rows = []
+for vac in VACS:
+    sub = VAC_CDF.loc[VAC_CDF.vac.eq(vac)].sort_values("age_months")
+    hit = sub.loc[sub.cdf >= 0.5, "age_months"]
+    f24 = float(sub.loc[sub.age_months.eq(24), "cdf"].iloc[0])
+    f36 = float(sub.loc[sub.age_months.eq(36), "cdf"].iloc[0])
+    rows.append({
+        "VAC": vac,
+        "Eval verbs": n_verb[vac],
+        "Producers": int(sub.n_event.sum()),
+        "F(24 mo) %": f"{100 * f24:.1f}",
+        "F(36 mo) %": f"{100 * f36:.1f}",
+        "Age at 50% (mo)": int(hit.iloc[0]) if len(hit) else "not reached",
+    })
+pd.DataFrame(rows)
+```
+
+Same estimator, now one curve per eval verb. Rare lemmas stay well below 1: most children never produce them while observed.
+
+```{python}
+#| label: fig-eval-verb-cdf
+#| fig-cap: "Discrete Kaplan–Meier CDF of age at first production of each eval-set verb. Same delayed-entry censoring and bin hazard as the construction-level curves."
+#| fig-height: 8
+
+fig, axes = plt.subplots(2, 2, figsize=(10, 8), sharex=True, sharey=True)
+for ax, vac in zip(axes.ravel(), VACS):
+    order = ORDER.loc[ORDER.vac.eq(vac)].sort_values("n_tokens", ascending=False)
+    sub = VERB_CDF.loc[VERB_CDF.vac.eq(vac)]
+    for verb in order.verb:
+        row = sub.loc[sub.verb.eq(verb)].sort_values("age_months")
+        if row.empty:
+            continue
+        ax.plot(row.age_months, row.cdf * 100, label=verb)
+    ax.set_title(TITLES[vac])
+    ax.set_xlim(12, 69)
+    ax.set_ylim(0, 100)
+    ax.set_xticks([12, 24, 36, 48, 60])
+    ax.legend(fontsize=8, loc="lower right", frameon=False, ncol=2)
+axes[0, 0].set_ylabel("Children with first production (%)")
+axes[1, 0].set_ylabel("Children with first production (%)")
+axes[1, 0].set_xlabel("Age (months)")
+axes[1, 1].set_xlabel("Age (months)")
+fig.tight_layout()
+```
+
+## Kaplan–Meier median first age
+
+Rank 1 = earliest KM median. Medians that are not reached are listed last. The interval is a 95% bootstrap CI. Producers are children with an observed first use (`n_event`); never-producers are right-censored.
+
+```{python}
+#| echo: false
+
+def km_table(vac):
+    aoa = AOA.loc[AOA.vac.eq(vac)].sort_values("aoa_rank").copy()
+    tok = ORDER.loc[ORDER.vac.eq(vac), ["verb", "n_tokens"]]
+    out = aoa.merge(tok, on="verb")
+    reached = out.median_reached.fillna(False).astype(bool) & out.km_median.notna()
+    median = np.where(reached, out.km_median.map(lambda x: f"{x:.1f}"), "not reached")
+    ci = []
+    for _, r in out.iterrows():
+        if pd.notna(r.km_ci_low) and pd.notna(r.km_ci_high):
+            ci.append(f"{r.km_ci_low:.1f}–{r.km_ci_high:.1f}")
+        elif pd.notna(r.km_ci_low):
+            ci.append(f"≥ {r.km_ci_low:.1f}")
+        else:
+            ci.append("—")
+    return pd.DataFrame({
+        "Rank": range(1, len(out) + 1),
+        "Verb": out.verb.to_numpy(),
+        "KM median (mo)": median,
+        "95% CI": ci,
+        "Producers": out.n_event.astype(int).to_numpy(),
+        "Tokens": out.n_tokens.astype(int).to_numpy(),
+    })
+```
+
+### VL intransitive locative
+
+```{python}
+#| label: tbl-eval-km-vl
+km_table("VL")
+```
+
+### VOL caused motion
+
+```{python}
+#| label: tbl-eval-km-vol
+km_table("VOL")
+```
+
+### VO transitive
+
+```{python}
+#| label: tbl-eval-km-vo
+km_table("VO")
+```
+
+### VOO ditransitive
+
+```{python}
+#| label: tbl-eval-km-voo
+km_table("VOO")
+```

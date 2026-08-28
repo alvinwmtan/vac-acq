@@ -9,6 +9,7 @@ book:
     - index.qmd
     - 01-acquisition-curves.qmd
     - 02-eval-set.qmd
+    - 03-eval-verbs.qmd
 
 format:
   html:
