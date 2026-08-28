@@ -1,0 +1,73 @@
+# BabyLM eval set {#sec-eval}
+
+{{< include _caution.qmd >}}
+
+```{python}
+#| label: setup
+#| echo: false
+from pathlib import Path
+
+import pandas as pd
+
+DATA = Path("data")
+ITEMS = pd.read_csv(DATA / "test_set.csv")
+ALTS = [c for c in ITEMS.columns if c.startswith("alt_")]
+TITLES = {
+    "VL": "VL intransitive locative",
+    "VOL": "VOL caused motion",
+    "VO": "VO transitive",
+    "VOO": "VOO ditransitive",
+}
+n = len(ITEMS)
+n_per = ITEMS.groupby("construction_type").size()
+n_verb = ITEMS.groupby("construction_type")["verb"].nunique()
+n_corp = ITEMS["corpus"].nunique()
+corpora = ", ".join(sorted(ITEMS["corpus"].astype(str).unique()))
+```
+
+`{python} n` adult CHILDES utterances from corpora in `tokens_filled.parquet` that are absent from childes-db 2021.1 (`{python} corpora`). Each construction uses up to 10 verbs whose highest adult schematic-VAC share is that frame, ranked by adult frame frequency. Items are round-robin stratified across those verbs. Five distractors per item have <10% adult share in the same frame and are inflected like the original verb.
+
+Proper nouns, child speakers, fragments, fillers, and unintelligible `xxx` tokens are excluded. Frozen BabyLM `verb_sets.json` / ranking / affinity banks are unchanged.
+
+```{python}
+#| label: tbl-verbs
+#| echo: false
+pd.DataFrame({
+    "VAC": list(TITLES),
+    "Items": [int(n_per.get(c, 0)) for c in TITLES],
+    "Verbs": [
+        ", ".join(ITEMS.loc[ITEMS.construction_type.eq(c), "verb"].drop_duplicates())
+        for c in TITLES
+    ],
+})
+```
+
+## Examples
+
+Prefix / verb / suffix split the sentence at the CHILDES verb token so distractors can be spliced in.
+
+```{python}
+#| label: tbl-examples
+#| echo: false
+rows = []
+for cons in TITLES:
+    sub = ITEMS.loc[ITEMS.construction_type.eq(cons)].head(4)
+    for _, r in sub.iterrows():
+        rows.append({
+            "VAC": cons,
+            "Verb": r.verb,
+            "Prep": "" if pd.isna(r.preposition) else r.preposition,
+            "Sentence": r.sentence,
+            "Alts": ", ".join(str(r[c]) for c in ALTS),
+        })
+pd.DataFrame(rows)
+```
+
+## Full item list
+
+```{python}
+#| label: tbl-items
+#| echo: false
+show = ITEMS.drop(columns=[c for c in ("child_id",) if c in ITEMS.columns]).copy()
+show
+```

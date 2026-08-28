@@ -225,3 +225,4 @@ references/
 notebooks/_book/
 notebooks/.quarto/
 notebooks/*_files/
+data/cache/

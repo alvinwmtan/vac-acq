@@ -8,6 +8,7 @@ book:
   chapters:
     - index.qmd
     - 01-acquisition-curves.qmd
+    - 02-eval-set.qmd
 
 format:
   html:

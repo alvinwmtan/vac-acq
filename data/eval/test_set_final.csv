@@ -1,0 +1,401 @@
+item_id,construction_type,verb,preposition,sentence,prefix,inflected_verb,suffix,alt_1,alt_2,alt_3,alt_4,alt_5,corpus,child_id,child_age
+vl_0001,VL,stay,on,that faucet did not want to stay on the bathtub,that faucet did not want to,stay,on the bathtub,put,watch,want,give,push,EHS,139000000024.0,36.43
+vl_0002,VL,look,through,look through the bubble,,look,through the bubble,do,finish,push,take,give,Champaign,135000000016.0,27.0
+vl_0003,VL,hang,on,you left me hanging on my song,you left me,hanging,on my song,getting,doing,having,reading,liking,Champaign,135000000016.0,27.0
+vl_0004,VL,come,from,where's that coming from,where's that,coming,from,doing,putting,getting,letting,kicking,Sekali,,
+vl_0005,VL,stand,on,if you stand on one of those hos,if you,stand,on one of those hos,get,have,thank,mean,throw,Sekali,195000000001.0,
+vl_0006,VL,go,in,this goes in there like that,this,goes,in there like that,takes,pretends,gets,calls,scoops,EHS,139000000009.0,24.62
+vl_0007,VL,fall,on,some of the crumbs fell on his shirt,some of the crumbs,fell,on his shirt,remembered,got,had,passed,did,Champaign,135000000035.0,33.0
+vl_0008,VL,live,in,that one actually lives in there,that one actually,lives,in there,touches,hits,does,makes,turns,Sekali,,
+vl_0009,VL,talk,about,she wants to talk about magic,she wants to,talk,about magic,have,make,let,put,bring,EHS,139000000044.0,68.43
+vl_0010,VL,sit,down,let me hold them and you sit down,let me hold them and you,sit,down,like,need,get,do,have,Champaign,135000000001.0,21.0
+vl_0011,VL,stay,at,we stayed at once,we,stayed,at once,opened,did,got,put,built,Sekali,195000000001.0,
+vl_0012,VL,look,at,look at the shape,,look,at the shape,put,take,call,get,read,EHS,139000000024.0,37.33
+vl_0013,VL,hang,on,hang on there and just be careful,,hang,on there and just be careful,do,get,see,have,take,Sekali,195000000011.0,
+vl_0014,VL,come,over,he curls around and comes around here and then just all over there,he curls around and,comes,around here and then just all over there,gives,does,lets,gets,puts,FMB_home,142000000001.0,26.0
+vl_0015,VL,stand,at,I need you to stand up at all,I need you to,stand,up at all,stop,get,put,break,smell,Sekali,,
+vl_0016,VL,go,down,go down the ladder,,go,down the ladder,like,drop,see,love,put,EHS,139000000009.0,24.62
+vl_0017,VL,fall,off,he fall he fell off,he fall he,fell,off,knew,had,put,made,got,Champaign,135000000009.0,24.0
+vl_0018,VL,live,in,all the animals are living in the barn,all the animals are,living,in the barn,making,giving,watching,having,wiping,Champaign,135000000001.0,21.0
+vl_0019,VL,talk,into,you talk into that and they can hear all the words you say,you,talk,into that and they can hear all the words you say,get,do,put,clean,have,Champaign,135000000023.0,30.0
+vl_0020,VL,sit,in,a wise old owl sat in an oak,a wise old owl,sat,in an oak,got,built,baked,put,sent,FMB_book,141000000001.0,25.0
+vl_0021,VL,stay,on,you stay on the grass,you,stay,on the grass,push,swallow,drink,see,fix,FMB_home,142000000001.0,25.0
+vl_0022,VL,look,at,look at the piece,,look,at the piece,get,put,hear,do,leave,EHS,139000000024.0,35.59
+vl_0023,VL,hang,on,it hangs on the tractor,it,hangs,on the tractor,undoes,touches,does,gets,watches,Champaign,135000000023.0,30.0
+vl_0024,VL,come,on,you can do it come on,you can do it,come,on,gotten,loved,noticed,known,stirred,Edinburgh,185000000495.0,15.66
+vl_0025,VL,stand,over,let me stand over here,let me,stand,over here,put,let,turn,squish,catch,Sekali,195000000011.0,
+vl_0026,VL,go,in,look the baby's going in the tub,look the baby's,going,in the tub,seeing,doing,having,reading,lifting,EHS,139000000001.0,14.46
+vl_0027,VL,fall,in,she falls down in the big chair,she,falls,down in the big chair,helps,wipes,needs,gets,poners,Champaign,135000000044.0,37.0
+vl_0028,VL,live,down,you says the little boy who lives down the lane should,you says the little boy who,lives,down the lane should,gets,has,lets,takes,shows,Sekali,195000000001.0,
+vl_0029,VL,talk,about,I'm talking about daddy,I'm,talking,about daddy,doing,getting,giving,liking,putting,Sekali,195000000001.0,
+vl_0030,VL,sit,on,we could go and sit on the rug and do some beads,we could go and,sit,on the rug and do some beads,get,mean,turn,put,tear,Sekali,195000000001.0,
+vl_0031,VL,stay,on,it stays on while you're eating meal,it,stays,on while you're eating meal,thanks,brushes,gets,makes,closes,Sekali,195000000011.0,
+vl_0032,VL,look,at,look at these ones,,look,at these ones,do,make,get,nextt,stir,EHS,139000000009.0,25.03
+vl_0033,VL,hang,down,her head hung down,her head,hung,down,saw,brought,pressed,got,put,FMB_book,141000000001.0,24.0
+vl_0034,VL,come,in,she'll come in a minute,she'll,come,in a minute,popped,pushed,tickled,gotten,given,Champaign,135000000031.0,33.0
+vl_0035,VL,stand,on,she can stand on the chair,she can,stand,on the chair,see,do,need,put,know,Sekali,195000000001.0,
+vl_0036,VL,go,down,these go down there,these,go,down there,leave,see,put,line,do,FMB_home,142000000001.0,24.0
+vl_0037,VL,fall,off,the pizza fell off,the pizza,fell,off,remembered,threw,tried,got,took,Champaign,135000000009.0,24.0
+vl_0038,VL,live,in,I think that needs to live in your toolbox,I think that needs to,live,in your toolbox,excuse,see,leave,do,have,Sekali,195000000001.0,
+vl_0039,VL,talk,about,we haven't really talked about what an elephant says,we haven't really,talked,about what an elephant says,gotten,loved,kept,attacked,seen,Champaign,135000000016.0,27.0
+vl_0040,VL,sit,down,I know she did you going to sit down here,I know she did you going to,sit,down here,watch,put,stop,get,see,Sekali,195000000001.0,
+vl_0041,VL,stay,on,the belt stays on him,the belt,stays,on him,drops,gets,wants,puts,lets,Sekali,,
+vl_0042,VL,look,at,look at all of these,,look,at all of these,let,thank,see,do,know,Champaign,135000000016.0,27.0
+vl_0043,VL,hang,on,you stand on it and you hang on real tight,you stand on it and you,hang,on real tight,want,get,like,do,put,Champaign,135000000039.0,36.0
+vl_0044,VL,come,off,that one doesn't come off,that one doesn't,come,off,used,found,left,cut,thrown,Champaign,135000000035.0,33.0
+vl_0045,VL,stand,on,they're not meant to have little girls standing on them,they're not meant to have little girls,standing,on them,zipping,seeing,pouring,putting,following,Sekali,195000000001.0,
+vl_0046,VL,go,around,could you go around the other side,could you,go,around the other side,get,make,try,stack,turn,Sekali,195000000001.0,
+vl_0047,VL,fall,off,one fell off and bumped his head,one,fell,off and bumped his head,put,did,dropped,got,had,Edinburgh,185000000849.0,15.39
+vl_0048,VL,live,down,says the little boy who lives down the lane,says the little boy who,lives,down the lane,washes,makes,sees,adds,throws,Sekali,195000000001.0,
+vl_0049,VL,talk,to,I'll talk to you later,I'll,talk,to you later,get,finish,help,show,want,EHS,139000000001.0,13.72
+vl_0050,VL,sit,on,I can sit on this side then,I can,sit,on this side then,give,try,do,turn,put,Champaign,135000000039.0,36.0
+vl_0051,VL,stay,inside,he stayed inside more than two weeks,he,stayed,inside more than two weeks,sang,got,had,hugged,did,EHS,139000000009.0,24.33
+vl_0052,VL,look,at,look at the baby in the crib,,look,at the baby in the crib,have,do,leave,see,want,EHS,139000000001.0,14.72
+vl_0053,VL,hang,on,I know hang on,I know,hang,on,buy,pick,know,spoil,find,Edinburgh,185000000070.0,15.53
+vl_0054,VL,come,over,you have to come over here and sit,you have to,come,over here and sit,made,gotten,bought,thanked,done,EHS,139000000024.0,38.3
+vl_0055,VL,stand,in,you're standing in a bath,you're,standing,in a bath,putting,making,closing,pardoning,turning,Sekali,195000000011.0,
+vl_0056,VL,go,to,this little piggy went to market,this little piggy,went,to market,read,tried,took,kept,did,EHS,139000000024.0,36.36
+vl_0057,VL,fall,down,we don't want it to fall down,we don't want it to,fall,down,show,make,have,put,wonder,Champaign,135000000019.0,27.0
+vl_0058,VL,live,in,there we go and they live in this house over here,there we go and they,live,in this house over here,put,get,leave,change,hear,EHS,139000000001.0,15.1
+vl_0059,VL,talk,to,I'm talking to you,I'm,talking,to you,leaving,having,putting,throwing,seeing,Sekali,195000000001.0,
+vl_0060,VL,sit,on,that's because the turkey I think's sitting on the floor,that's because the turkey I think's,sitting,on the floor,having,spoiling,bringing,turning,making,Champaign,135000000027.0,30.0
+vl_0061,VL,stay,on,stay on the grass,,stay,on the grass,get,hear,leave,pick,let,FMB_home,142000000001.0,24.0
+vl_0062,VL,look,at,look at the colors on the outside,,look,at the colors on the outside,mend,need,have,bite,miss,Champaign,135000000016.0,27.0
+vl_0063,VL,hang,on,hang on a minute,,hang,on a minute,clap,see,put,like,use,Edinburgh,185000000198.0,15.59
+vl_0064,VL,come,off,that doesn't come off either,that doesn't,come,off either,done,let,destroyed,given,put,Champaign,135000000023.0,31.0
+vl_0065,VL,stand,on,you're standing on your own well done,you're,standing,on your own well done,getting,stroking,showing,wanting,having,Edinburgh,185000000472.0,15.2
+vl_0066,VL,go,in,it goes in the drawer,it,goes,in the drawer,lets,knows,picks,pours,chases,EHS,139000000024.0,35.39
+vl_0067,VL,fall,down,that egg keeps trying to fall down,that egg keeps trying to,fall,down,get,watch,take,have,wipe,Champaign,135000000016.0,27.0
+vl_0068,VL,live,in,see when they live in here,see when they,live,in here,wear,want,do,use,see,EHS,139000000024.0,37.16
+vl_0069,VL,talk,on,it looks like she's talking on the phone,it looks like she's,talking,on the phone,liking,having,breaking,habering,making,Edinburgh,185000000302.0,15.43
+vl_0070,VL,sit,on,sit down on the blanket,,sit,down on the blanket,fix,get,throw,do,find,EHS,139000000009.0,23.85
+vl_0071,VL,stay,on,food stays on the table,food,stays,on the table,knows,puts,throws,gets,protects,Champaign,135000000016.0,27.0
+vl_0072,VL,look,at,look at that time,,look,at that time,take,break,leave,wear,build,Sekali,,
+vl_0073,VL,hang,down,her head hung down,her head,hung,down,made,put,brought,saw,read,FMB_home,142000000001.0,24.0
+vl_0074,VL,come,off,I don't know if the lid comes off,I don't know if the lid,comes,off,knows,answers,spills,gets,pulls,Champaign,135000000039.0,36.0
+vl_0075,VL,stand,on,stand on one of those,,stand,on one of those,like,hear,get,help,have,Sekali,195000000001.0,
+vl_0076,VL,go,in,go in your room,,go,in your room,put,build,know,sing,have,EHS,139000000024.0,36.36
+vl_0077,VL,fall,down,your orange fell down,your orange,fell,down,washed,heard,did,got,put,Champaign,135000000012.0,24.0
+vl_0078,VL,live,in,who lives in there,who,lives,in there,takes,does,gets,sees,costs,Sekali,195000000011.0,
+vl_0079,VL,talk,to,him talks to you,him,talks,to you,knows,pours,likes,drops,needs,Champaign,135000000035.0,34.0
+vl_0080,VL,sit,down,I asked you to sit down and play blocks with me,I asked you to,sit,down and play blocks with me,pick,stop,brush,call,hear,EHS,139000000024.0,35.66
+vl_0081,VL,stay,in,we made him a pen to stay in,we made him a pen to,stay,in,make,stop,put,do,get,EHS,139000000024.0,37.53
+vl_0082,VL,look,at,look at all these red ones over here,,look,at all these red ones over here,build,find,see,have,get,EHS,139000000009.0,23.85
+vl_0083,VL,hang,on,aren't they me hang on,aren't they me,hang,on,read,want,do,push,know,Sekali,195000000001.0,
+vl_0084,VL,come,from,it comes down from the sky like that,it,comes,down from the sky like that,touches,minds,gets,puts,knows,Edinburgh,185000000461.0,15.3
+vl_0085,VL,stand,on,stand on the bracket,,stand,on the bracket,get,try,need,put,break,Sekali,195000000011.0,
+vl_0086,VL,go,down,water's going down the plug hole,water's,going,down the plug hole,putting,seeing,making,getting,hearing,Edinburgh,185000000145.0,15.1
+vl_0087,VL,fall,down,he did fall down,he did,fall,down,want,get,put,take,see,Champaign,135000000009.0,24.0
+vl_0088,VL,live,on,I thought he lived on his tractor,I thought he,lived,on his tractor,took,liked,opened,wound,got,Champaign,135000000044.0,36.0
+vl_0089,VL,talk,to,that's recording me talking to you and any talking that you might do,that's recording me,talking,to you and any talking that you might do,putting,stopping,changing,making,loving,Edinburgh,185000000699.0,15.36
+vl_0090,VL,sit,to,sit over here next to me,,sit,over here next to me,shut,get,want,give,make,EHS,139000000009.0,25.03
+vl_0091,VL,stay,on,to stay on there when you can,to,stay,on there when you can,fold,put,sell,see,get,Sekali,195000000011.0,
+vl_0092,VL,look,at,look at the rain outside,,look,at the rain outside,make,blame,find,sing,get,Edinburgh,185000000573.0,15.1
+vl_0093,VL,hang,to,hang on to the handle,,hang,on to the handle,get,put,see,do,make,EHS,139000000009.0,23.03
+vl_0094,VL,come,in,you should I come in,you should I,come,in,brought,seen,worn,liked,put,Sekali,195000000001.0,
+vl_0095,VL,stand,on,that's standing on it,that's,standing,on it,needing,having,reading,asking,thanking,Sekali,195000000011.0,
+vl_0096,VL,go,off,when the beeper goes off,when the beeper,goes,off,puts,calls,pulls,finishes,uses,EHS,139000000009.0,24.46
+vl_0097,VL,fall,off,he almost fell off,he almost,fell,off,took,did,put,let,built,Champaign,135000000005.0,21.0
+vl_0098,VL,live,on,that lives on the farm,that,lives,on the farm,answers,gets,fixes,takes,asks,Champaign,135000000039.0,36.0
+vl_0099,VL,talk,to,any daddy's talking to you,any daddy's,talking,to you,letting,pouring,stopping,thanking,putting,Sekali,195000000001.0,
+vl_0100,VL,sit,in,you can sit in that chair,you can,sit,in that chair,ir,do,drink,put,see,Champaign,135000000009.0,24.0
+vol_0001,VOL,knock,over,you knocked him over,you,knocked,him over,looked,knew,fell,met,shook,Champaign,135000000019.0,28.0
+vol_0002,VOL,squirt,in,can you squirt some in your hand and rub it together,can you,squirt,some in your hand and rub it together,know,sit,say,use,find,Champaign,135000000009.0,24.0
+vol_0003,VOL,pop,down,hang on a minute until I pop this nappy down because that's looking dangerous,hang on a minute until I,pop,this nappy down because that's looking dangerous,finish,figure,mind,build,forget,Edinburgh,185000000703.0,15.82
+vol_0004,VOL,stick,in,stick it all the way in there,,stick,it all the way in there,scratch,thank,let,look,know,EHS,139000000009.0,23.03
+vol_0005,VOL,switch,off,I'm going to switch my phone off because you keep phoning random people,I'm going to,switch,my phone off because you keep phoning random people,have,show,want,do,sit,Edinburgh,185000000591.0,15.36
+vol_0006,VOL,put,in,put it in like that,,put,it in like that,excused,known,wanted,looked,fixed,Edinburgh,185000000650.0,15.0
+vol_0007,VOL,tuck,in,you will tuck her in,you will,tuck,her in,play,excuse,thank,see,enjoy,Champaign,135000000027.0,30.0
+vol_0008,VOL,pour,in,pour some in her cup,,pour,some in her cup,have,look,count,hear,see,Champaign,135000000012.0,24.0
+vol_0009,VOL,knock,down,you knock it down every time,you,knock,it down every time,go,think,have,love,open,Edinburgh,185000000429.0,15.23
+vol_0010,VOL,squirt,on,squirt a little bit on the plate or on the hotdog for him,,squirt,a little bit on the plate or on the hotdog for him,go,say,have,sit,tell,Champaign,135000000009.0,24.0
+vol_0011,VOL,pop,in,let me pop this lot in the bin so you can have the broom,let me,pop,this lot in the bin so you can have the broom,say,feed,finish,tell,have,Edinburgh,185000000843.0,15.07
+vol_0012,VOL,stick,in,can you stick your hand in and pull some slime out,can you,stick,your hand in and pull some slime out,hold,have,sit,belong,see,Sekali,195000000011.0,
+vol_0013,VOL,switch,on,I keep probably getting to switch the microphone on,I keep probably getting to,switch,the microphone on,thank,talk,know,have,need,Sekali,195000000001.0,
+vol_0014,VOL,put,in,I'll put the spoon in the dishwasher,I'll,put,the spoon in the dishwasher,had,guessed,seen,made,stopped,Sekali,195000000001.0,
+vol_0015,VOL,tuck,in,is she tucking their food up in bed with them,is she,tucking,their food up in bed with them,doing,waiting,eating,coming,looking,Sekali,195000000001.0,
+vol_0016,VOL,pour,in,pour some of the batter in,,pour,some of the batter in,have,fall,mean,sort,see,Champaign,135000000031.0,33.0
+vol_0017,VOL,knock,over,we can pick them up if we knock them over,we can pick them up if we,knock,them over,make,sort,mix,look,need,Champaign,135000000005.0,21.0
+vol_0018,VOL,squirt,on,squirt it on mommy's egg,,squirt,it on mommy's egg,let,do,hang,try,finish,Champaign,135000000005.0,21.0
+vol_0019,VOL,pop,on,they just popped on your head,they just,popped,on your head,walked,looked,liked,counted,held,Champaign,135000000027.0,31.0
+vol_0020,VOL,stick,on,you don't stick your mouth on it,you don't,stick,your mouth on it,fix,have,recognize,say,like,Champaign,135000000001.0,21.0
+vol_0021,VOL,put,over,can you put that over there,can you,put,that over there,washed,rung,done,come,let,Sekali,195000000011.0,
+vol_0022,VOL,tuck,in,tuck him in there,,tuck,him in there,touch,have,do,go,hold,Champaign,135000000005.0,22.0
+vol_0023,VOL,pour,into,right then you can pour that into there and see what happens,right then you can,pour,that into there and see what happens,have,go,fall,like,look,Sekali,195000000011.0,
+vol_0024,VOL,knock,off,you knocked the bear off the chair,you,knocked,the bear off the chair,had,saw,made,opened,did,Champaign,135000000009.0,24.0
+vol_0025,VOL,squirt,on,squirt some soap on it,,squirt,some soap on it,build,do,find,go,have,Champaign,135000000023.0,30.0
+vol_0026,VOL,pop,in,we pop it in there,we,pop,it in there,have,find,remember,like,watch,Sekali,195000000001.0,
+vol_0027,VOL,stick,in,you stuck it there in the first place,you,stuck,it there in the first place,had,saw,picked,found,thanked,Sekali,195000000011.0,
+vol_0028,VOL,put,on,when she puts them on the refrigerator she says she's so proud of me,when she,puts,them on the refrigerator she says she's so proud of me,has,goes,wants,holds,pretends,FMB_book,141000000001.0,23.0
+vol_0029,VOL,tuck,down,tuck your head down,,tuck,your head down,need,know,like,let,come,EHS,139000000009.0,26.56
+vol_0030,VOL,pour,on,pour it on your plate then,,pour,it on your plate then,stop,open,thank,do,know,Champaign,135000000039.0,36.0
+vol_0031,VOL,knock,down,you knocked them down,you,knocked,them down,saw,went,thought,looked,stood,Edinburgh,185000000429.0,15.23
+vol_0032,VOL,pop,in,can you pop that one back in there,can you,pop,that one back in there,want,look,know,wear,have,Sekali,195000000011.0,
+vol_0033,VOL,stick,in,stick your arm all the way in,,stick,your arm all the way in,have,know,miss,let,wear,EHS,139000000009.0,24.16
+vol_0034,VOL,put,in,put them in here,,put,them in here,told,weighed,liked,eaten,done,Champaign,135000000001.0,21.0
+vol_0035,VOL,pour,in,pour in the water,,pour,in the water,pick,make,happen,want,upset,Edinburgh,185000000595.0,15.53
+vol_0036,VOL,knock,down,you're going to try and knock down your,you're going to try and,knock,down your,let,come,want,make,go,Sekali,195000000011.0,
+vol_0037,VOL,pop,in,it popped in my eye,it,popped,in my eye,comered,said,told,did,wondered,Champaign,135000000023.0,30.0
+vol_0038,VOL,stick,in,stick that back in the fridge,,stick,that back in the fridge,look,go,know,want,think,Edinburgh,185000000802.0,15.43
+vol_0039,VOL,put,over,put some reds at ones over here,,put,some reds at ones over here,ponered,lied,had,closed,liked,EHS,139000000009.0,23.95
+vol_0040,VOL,pour,in,you can pour yourself some juice in one of those cups,you can,pour,yourself some juice in one of those cups,do,pick,say,come,have,Champaign,135000000016.0,28.0
+vol_0041,VOL,knock,over,I'm making a tower that you can knock over,I'm making a tower that you can,knock,over,tell,make,have,stand,look,EHS,139000000024.0,35.59
+vol_0042,VOL,pop,in,it popped in you hair,it,popped,in you hair,did,noticed,needed,saw,heard,Champaign,135000000009.0,24.0
+vol_0043,VOL,stick,on,stick them on the stove,,stick,them on the stove,see,say,like,make,go,EHS,139000000001.0,14.82
+vol_0044,VOL,put,on,put it on top,,put,it on top,eaten,found,undone,hurt,liked,EHS,139000000009.0,28.13
+vol_0045,VOL,pour,down,you just pour it down your neck,you just,pour,it down your neck,let,make,help,have,come,Sekali,195000000011.0,
+vol_0046,VOL,knock,over,your belly knocked it over,your belly,knocked,it over,ate,sat,tenered,went,had,Champaign,135000000012.0,24.0
+vol_0047,VOL,pop,on,they popped on your nose,they,popped,on your nose,let,wanted,bought,felt,had,Champaign,135000000001.0,21.0
+vol_0048,VOL,stick,in,stick them in your eye,,stick,them in your eye,have,remember,eat,see,do,Sekali,,
+vol_0049,VOL,put,in,put some peas in there,,put,some peas in there,had,grown,made,done,run,EHS,139000000001.0,14.23
+vol_0050,VOL,pour,in,pour some more in there,,pour,some more in there,lose,come,have,let,know,Champaign,135000000009.0,24.0
+vol_0051,VOL,knock,off,you knocked the bear off the chair,you,knocked,the bear off the chair,looked,did,remembered,ate,needed,Champaign,135000000009.0,24.0
+vol_0052,VOL,pop,in,pop it in there,,pop,it in there,find,show,mind,play,go,Sekali,195000000001.0,
+vol_0053,VOL,stick,to,stick it back to the door so you know where it is,,stick,it back to the door so you know where it is,need,let,brush,bother,tease,EHS,139000000055.0,58.82
+vol_0054,VOL,put,on,I think you put that on the other table,I think you,put,that on the other table,had,found,looked,did,went,Champaign,135000000012.0,25.0
+vol_0055,VOL,pour,on,you poured it on her head though,you,poured,it on her head though,had,found,told,wanted,went,Champaign,135000000001.0,21.0
+vol_0056,VOL,knock,off,you knocked them off,you,knocked,them off,looked,said,did,made,had,Champaign,135000000001.0,21.0
+vol_0057,VOL,stick,on,stick it right on top,,stick,it right on top,watch,make,know,go,wear,Champaign,135000000039.0,36.0
+vol_0058,VOL,put,in,put animals in the boat,,put,animals in the boat,bounced,picked,asked,had,made,EHS,139000000001.0,13.72
+vol_0059,VOL,pour,into,you poured it into the cup,you,poured,it into the cup,had,ate,liked,saw,said,Sekali,195000000001.0,
+vol_0060,VOL,knock,down,you knocked everything down,you,knocked,everything down,went,missed,stayed,fit,looked,Champaign,135000000027.0,31.0
+vol_0061,VOL,stick,on,stick them on the chair,,stick,them on the chair,know,go,do,try,sit,Champaign,135000000012.0,24.0
+vol_0062,VOL,put,in,put this in here,,put,this in here,had,done,wanted,gone,stood,EHS,139000000001.0,13.79
+vol_0063,VOL,pour,on,you can pour water on it,you can,pour,water on it,look,do,see,sit,shout,Sekali,195000000011.0,
+vol_0064,VOL,knock,over,you can knock it over,you can,knock,it over,look,know,like,go,see,Champaign,135000000016.0,27.0
+vol_0065,VOL,stick,on,what else do we need to stick on,what else do we need to,stick,on,open,love,watch,break,hold,Sekali,195000000011.0,
+vol_0066,VOL,put,in,put those in there,,put,those in there,let,gone,bought,landed,pretended,EHS,139000000009.0,25.03
+vol_0067,VOL,pour,in,pour it in the cup,,pour,it in the cup,dripp,close,find,know,do,Champaign,135000000012.0,24.0
+vol_0068,VOL,knock,down,we knocked the block down,we,knocked,the block down,fell,hung,ran,did,saw,Champaign,135000000001.0,21.0
+vol_0069,VOL,stick,on,you stuck a sweet on already,you,stuck,a sweet on already,held,found,liked,hacered,did,Sekali,195000000011.0,
+vol_0070,VOL,put,over,put this over here,,put,this over here,seen,answered,eaten,made,bought,EHS,139000000024.0,35.59
+vol_0071,VOL,pour,in,pour it in the cup,,pour,it in the cup,close,sing,look,brush,see,Champaign,135000000016.0,27.0
+vol_0072,VOL,knock,down,you knock it down,you,knock,it down,know,say,want,rush,thank,Champaign,135000000023.0,30.0
+vol_0073,VOL,stick,in,stick that in there,,stick,that in there,sit,thank,go,stand,think,EHS,139000000024.0,35.82
+vol_0074,VOL,put,on,put it on something flat,,put,it on something flat,bought,found,had,heard,done,EHS,139000000024.0,35.89
+vol_0075,VOL,pour,in,pour it in there,,pour,it in there,see,do,eat,hold,want,Champaign,135000000016.0,28.0
+vol_0076,VOL,knock,down,you knock them all down,you,knock,them all down,make,like,eat,come,know,Champaign,135000000009.0,24.0
+vol_0077,VOL,stick,in,stick your hand in there,,stick,your hand in there,open,let,have,look,do,EHS,139000000009.0,23.03
+vol_0078,VOL,put,in,should we go and put this in the porch,should we go and,put,this in the porch,sat,run,looked,had,found,Sekali,195000000001.0,
+vol_0079,VOL,pour,in,pour it in here,,pour,it in here,help,go,know,play,pick,Champaign,135000000001.0,21.0
+vol_0080,VOL,knock,over,say I knocked them over,say I,knocked,them over,tested,used,made,sat,thanked,Champaign,135000000005.0,21.0
+vol_0081,VOL,stick,on,you don't stick your mouth on it,you don't,stick,your mouth on it,hold,go,stand,look,learn,Champaign,135000000001.0,21.0
+vol_0082,VOL,put,down,what did you just put down the slide,what did you just,put,down the slide,looked,made,liked,seen,used,Sekali,195000000011.0,
+vol_0083,VOL,pour,around,you have poured the omelette around the place,you have,poured,the omelette around the place,done,gone,cleaned,pinched,wanted,Edinburgh,185000000365.0,15.03
+vol_0084,VOL,knock,down,you knocked them down,you,knocked,them down,went,did,worked,had,came,Champaign,135000000039.0,36.0
+vol_0085,VOL,stick,in,stick it in your ear,,stick,it in your ear,like,go,eat,make,watch,EHS,139000000009.0,23.49
+vol_0086,VOL,put,in,we can put some dishes in there,we can,put,some dishes in there,had,gone,known,thanked,bought,Champaign,135000000009.0,24.0
+vol_0087,VOL,pour,on,you're not just pouring it on the table,you're not just,pouring,it on the table,being,making,having,seeing,using,Edinburgh,185000000267.0,15.16
+vol_0088,VOL,knock,over,we can knock them over,we can,knock,them over,need,see,have,make,say,Champaign,135000000005.0,21.0
+vol_0089,VOL,stick,on,we'll have to stick the wibbly eyes on right here's his nose,we'll have to,stick,the wibbly eyes on right here's his nose,fit,make,hang,look,pack,Sekali,195000000011.0,
+vol_0090,VOL,put,in,put this back in here,,put,this back in here,minded,gone,said,loved,needed,EHS,139000000024.0,38.0
+vol_0091,VOL,pour,in,the doggie is pouring chocolate syrup in the baby's cup,the doggie is,pouring,chocolate syrup in the baby's cup,talking,knowing,thanking,letting,having,EHS,139000000001.0,14.76
+vol_0092,VOL,knock,down,you could knock the cow house down,you could,knock,the cow house down,need,look,see,do,burn,Champaign,135000000016.0,27.0
+vol_0093,VOL,stick,over,she stuck it over,she,stuck,it over,wore,lost,needed,ate,smelled,EHS,139000000009.0,24.46
+vol_0094,VOL,put,down,put that right down there,,put,that right down there,crossed,made,told,fitted,eaten,EHS,139000000009.0,26.59
+vol_0095,VOL,pour,in,let's pour some let's pour some milk in,let's pour some let's,pour,some milk in,need,am,do,see,make,Champaign,135000000001.0,21.0
+vol_0096,VOL,knock,down,I'll build a tower and you can knock it down,I'll build a tower and you can,knock,it down,sit,go,look,speak,like,Champaign,135000000001.0,21.0
+vol_0097,VOL,stick,on,stick it on top,,stick,it on top,tickle,eat,do,go,swallow,EHS,139000000024.0,35.82
+vol_0098,VOL,put,in,put him back in here,,put,him back in here,bought,had,loved,made,done,EHS,139000000001.0,13.53
+vol_0099,VOL,pour,in,pour in some milk,,pour,in some milk,let,see,know,listen,boo,Edinburgh,185000000595.0,15.53
+vol_0100,VOL,knock,down,one of them fell over and knocked down sissy and brother,one of them fell over and,knocked,down sissy and brother,fixed,ran,used,had,ate,Champaign,135000000039.0,36.0
+vo_0001,VO,want,,I don't want you to be hurt,I don't,want,you to be hurt,give,sit,fall,lie,stay,Champaign,135000000039.0,36.0
+vo_0002,VO,let,,let the bunny go nightnight,,let,the bunny go nightnight,given,sat,lived,talked,dripped,EHS,139000000009.0,24.82
+vo_0003,VO,say,,say Mummy they're troublesome,,say,Mummy they're troublesome,give,dripp,talk,fall,sit,Edinburgh,185000000259.0,15.33
+vo_0004,VO,make,,you almost made it,you almost,made,it,gave,fell,sat,talked,lived,Champaign,135000000027.0,31.0
+vo_0005,VO,see,,I see some grapes,I,see,some grapes,sit,give,fall,talk,live,EHS,139000000001.0,15.39
+vo_0006,VO,eat,,I've got lots left you've nearly eaten all yours,I've got lots left you've nearly,eaten,all yours,fallen,given,talked,listened,been,Edinburgh,185000000283.0,15.16
+vo_0007,VO,thank,,there you go thank you,there you go,thank,you,give,fall,sit,listen,live,EHS,139000000024.0,36.39
+vo_0008,VO,have,,we have a lighting problem,we,have,a lighting problem,talk,sit,give,fall,live,Sekali,195000000011.0,
+vo_0009,VO,do,,watch the horsie and we'll do the doggy,watch the horsie and we'll,do,the doggy,give,sit,fall,land,stay,Champaign,135000000019.0,27.0
+vo_0010,VO,get,,she's got the caterpillar ready for you,she's,got,the caterpillar ready for you,fallen,settled,talked,given,stayed,Champaign,135000000012.0,24.0
+vo_0011,VO,want,,do you want that one as well's,do you,want,that one as well's,give,sit,live,fall,listen,Sekali,195000000011.0,
+vo_0012,VO,let,,let me take some of the blue away,,let,me take some of the blue away,talked,lied,been,lived,given,EHS,139000000044.0,69.95
+vo_0013,VO,say,,what do you say,what do you,say,,give,sit,step,talk,stay,Sekali,195000000001.0,
+vo_0014,VO,make,,we could make humpties,we could,make,humpties,give,fall,talk,live,stay,Champaign,135000000005.0,21.0
+vo_0015,VO,see,,I see a bunch of pants,I,see,a bunch of pants,listen,talk,lie,sit,give,EHS,139000000009.0,24.16
+vo_0016,VO,eat,,I can't eat pizza with a spoon,I can't,eat,pizza with a spoon,listen,sit,stay,talk,give,Champaign,135000000023.0,31.0
+vo_0017,VO,thank,,thank you very much,,thank,you very much,give,listen,sit,fall,lie,Champaign,135000000009.0,24.0
+vo_0018,VO,have,,I don't have any cheerios but we can pretend,I don't,have,any cheerios but we can pretend,lie,give,listen,stay,talk,Champaign,135000000023.0,30.0
+vo_0019,VO,do,,he's he did it once,he's he,did,it once,fell,sat,gave,calmed,stepped,Champaign,135000000031.0,33.0
+vo_0020,VO,get,,get the other penguin,,get,the other penguin,give,lie,belong,fall,am,Champaign,135000000023.0,30.0
+vo_0021,VO,want,,I want that too,I,want,that too,sit,fall,give,stay,dripp,Edinburgh,185000000026.0,15.43
+vo_0022,VO,let,,let me see if it goes on the other side,,let,me see if it goes on the other side,fallen,sat,given,lived,belonged,EHS,139000000024.0,39.03
+vo_0023,VO,say,,what does an elephant say,what does an elephant,say,,sit,fall,lie,listen,give,EHS,139000000001.0,14.2
+vo_0024,VO,make,,freezy breeze made these three trees freeze,freezy breeze,made,these three trees freeze,gave,sat,fell,talked,listened,FMB_book,141000000001.0,24.0
+vo_0025,VO,see,,I see a pair of black shoes,I,see,a pair of black shoes,live,give,sit,fall,stay,EHS,139000000009.0,28.23
+vo_0026,VO,eat,,you ate all my food,you,ate,all my food,fell,gave,sat,stayed,talked,Champaign,135000000009.0,24.0
+vo_0027,VO,thank,,thank you very much,,thank,you very much,give,fall,listen,lie,sit,Champaign,135000000016.0,27.0
+vo_0028,VO,have,,you can have a drink,you can,have,a drink,fall,give,sit,am,listen,EHS,139000000024.0,36.16
+vo_0029,VO,do,,I won't do it,I won't,do,it,sit,stay,give,live,am,EHS,139000000009.0,25.16
+vo_0030,VO,get,,we need to get your wrist this time as well,we need to,get,your wrist this time as well,give,lie,talk,sit,fall,Sekali,195000000001.0,
+vo_0031,VO,want,,I thought you wanted hotdogs for breakfast,I thought you,wanted,hotdogs for breakfast,lived,sat,gave,fell,stepped,Champaign,135000000023.0,30.0
+vo_0032,VO,let,,let those station be two and a half,,let,those station be two and a half,given,sat,talked,lived,been,Sekali,195000000001.0,
+vo_0033,VO,say,,we'll say byebye baby,we'll,say,byebye baby,give,lie,sit,talk,lean,Champaign,135000000019.0,27.0
+vo_0034,VO,make,,I can't I'm making dinosaur land with edges,I can't I'm,making,dinosaur land with edges,living,falling,sitting,talking,giving,Sekali,195000000011.0,
+vo_0035,VO,see,,I think I see a waffle,I think I,see,a waffle,fall,sit,stay,give,listen,Champaign,135000000023.0,31.0
+vo_0036,VO,eat,,he ate a piece of chocolate cake,he,ate,a piece of chocolate cake,sat,talked,lived,gave,lay,EHS,139000000024.0,37.0
+vo_0037,VO,thank,,I thank you for more,I,thank,you for more,fall,belong,give,sit,talk,EHS,139000000009.0,25.16
+vo_0038,VO,have,,I wish I had a plate placemat,I wish I,had,a plate placemat,fell,gave,sat,talked,stayed,Champaign,135000000023.0,31.0
+vo_0039,VO,do,,what are you going to do,what are you going to,do,,fall,give,sit,land,tread,Sekali,,
+vo_0040,VO,get,,I'll just get these tissues,I'll just,get,these tissues,give,talk,sit,fall,live,Edinburgh,185000000026.0,15.43
+vo_0041,VO,want,,you want the book,you,want,the book,give,sit,fall,step,stay,EHS,139000000001.0,13.72
+vo_0042,VO,let,,let me see it,,let,me see it,given,sat,stayed,fallen,talked,EHS,139000000001.0,14.03
+vo_0043,VO,say,,what do you say,what do you,say,,listen,sit,give,stay,talk,Sekali,195000000001.0,
+vo_0044,VO,make,,you make it fit,you,make,it fit,stay,sit,give,talk,fall,EHS,139000000024.0,36.36
+vo_0045,VO,see,,problem is I can't see your faces very well,problem is I can't,see,your faces very well,give,live,lie,sit,talk,Sekali,195000000011.0,
+vo_0046,VO,eat,,I ate your nose,I,ate,your nose,gave,stepped,sat,fell,listened,Champaign,135000000001.0,21.0
+vo_0047,VO,thank,,thank you very much,,thank,you very much,sit,give,talk,fall,live,Edinburgh,185000000272.0,15.36
+vo_0048,VO,have,,I think the lion has the best bubbles,I think the lion,has,the best bubbles,gives,sits,talks,falls,lies,Champaign,135000000001.0,21.0
+vo_0049,VO,do,,do what mommy does,,do,what mommy does,land,live,step,lie,give,EHS,139000000009.0,23.43
+vo_0050,VO,get,,you got a papa,you,got,a papa,sat,talked,gave,fell,stayed,EHS,139000000044.0,71.95
+vo_0051,VO,want,,the baby wants some mustard,the baby,wants,some mustard,stays,talks,falls,gives,sits,Champaign,135000000001.0,21.0
+vo_0052,VO,let,,let me see that one,,let,me see that one,talked,listened,given,sat,fallen,EHS,139000000024.0,35.72
+vo_0053,VO,say,,what do you need to say,what do you need to,say,,sit,fall,give,belong,talk,Sekali,195000000011.0,
+vo_0054,VO,make,,could you make some for me,could you,make,some for me,talk,sit,live,stay,give,Sekali,195000000011.0,
+vo_0055,VO,see,,I didn't see them,I didn't,see,them,sit,float,listen,stay,give,Champaign,135000000039.0,36.0
+vo_0056,VO,eat,,he is eating a lot,he is,eating,a lot,giving,being,landing,living,sitting,Champaign,135000000039.0,37.0
+vo_0057,VO,thank,,thank you I trying I know you're trying to very good,,thank,you I trying I know you're trying to very good,belong,give,lie,listen,fall,Sekali,195000000011.0,
+vo_0058,VO,have,,I have ears and you have ears,I,have,ears and you have ears,sit,live,give,talk,lie,Champaign,135000000009.0,24.0
+vo_0059,VO,do,,we do it inside,we,do,it inside,live,sit,give,talk,fall,Sekali,195000000001.0,
+vo_0060,VO,get,,I'll go get them for you,I'll go,get,them for you,give,step,stay,sit,fall,Sekali,195000000001.0,
+vo_0061,VO,want,,you want your nose blown,you,want,your nose blown,lie,listen,fall,belong,live,Edinburgh,185000000239.0,15.99
+vo_0062,VO,let,,let me see what this one does,,let,me see what this one does,given,stayed,talked,lied,fallen,Champaign,135000000023.0,30.0
+vo_0063,VO,say,,you said black to start and black and dark brown,you,said,black to start and black and dark brown,lived,gave,sat,dripped,talked,Sekali,195000000011.0,
+vo_0064,VO,make,,they don't make stuff like this anymore,they don't,make,stuff like this anymore,sit,give,talk,stay,am,Champaign,135000000039.0,36.0
+vo_0065,VO,see,,let me see it,let me,see,it,fall,am,sit,lie,lean,Champaign,135000000019.0,27.0
+vo_0066,VO,eat,,I'll have to eat it if you make a strawberry,I'll have to,eat,it if you make a strawberry,stay,listen,lie,sit,talk,EHS,139000000050.0,59.13
+vo_0067,VO,thank,,thank you very much,,thank,you very much,sit,land,give,fall,talk,Champaign,135000000023.0,30.0
+vo_0068,VO,have,,you normally have it with egging,you normally,have,it with egging,fall,talk,give,sit,lie,Sekali,195000000001.0,
+vo_0069,VO,do,,you can do it now,you can,do,it now,fall,sit,belong,talk,give,Champaign,135000000035.0,33.0
+vo_0070,VO,get,,the tickle bug will get you,the tickle bug will,get,you,stay,lean,sit,give,fall,EHS,139000000009.0,22.76
+vo_0071,VO,want,,it probably means you are going to want banana,it probably means you are going to,want,banana,talk,fall,give,stay,sit,Sekali,,
+vo_0072,VO,let,,let mommy try it,,let,mommy try it,sat,given,leant,lived,fallen,Champaign,135000000001.0,22.0
+vo_0073,VO,say,,an elephant doesn't say quack,an elephant doesn't,say,quack,give,lie,talk,sit,belong,Champaign,135000000016.0,27.0
+vo_0074,VO,make,,what you need to do is make it long and flat,what you need to do is,make,it long and flat,sit,fall,give,talk,stay,Sekali,195000000011.0,
+vo_0075,VO,see,,you're going to see what's in the third bag,you're going to,see,what's in the third bag,talk,sit,give,land,fall,EHS,139000000009.0,23.49
+vo_0076,VO,eat,,the baby needs to eat more than mommy I guess,the baby needs to,eat,more than mommy I guess,give,sit,listen,live,fall,Champaign,135000000001.0,21.0
+vo_0077,VO,thank,,he said thank you,he said,thank,you,lie,listen,sit,give,belong,Champaign,135000000005.0,21.0
+vo_0078,VO,have,,we have a puzzle to do,we,have,a puzzle to do,give,fall,talk,sit,lie,EHS,139000000024.0,35.92
+vo_0079,VO,do,,you did do it all by yourself,you did,do,it all by yourself,sit,live,give,am,fall,Champaign,135000000019.0,27.0
+vo_0080,VO,get,,will we try and get some juice and that'll help,will we try and,get,some juice and that'll help,step,give,sit,fall,stay,Edinburgh,185000000699.0,15.36
+vo_0081,VO,want,,you want the he,you,want,the he,talk,arrive,fall,sit,give,Sekali,195000000001.0,
+vo_0082,VO,let,,let me check your ear,,let,me check your ear,stepped,sat,talked,arrived,lived,EHS,139000000044.0,69.03
+vo_0083,VO,say,,what noises a cat say says,what noises a cat,say,says,gives,falls,sits,listens,talks,Sekali,195000000001.0,
+vo_0084,VO,make,,you make a tower like we did before,you,make,a tower like we did before,fall,lie,give,talk,sit,EHS,139000000024.0,36.33
+vo_0085,VO,see,,I see a pizza box,I,see,a pizza box,give,talk,listen,fall,lie,Champaign,135000000039.0,36.0
+vo_0086,VO,eat,,said she ate a box of matches at the age of nine,said she,ate,a box of matches at the age of nine,sat,gave,listened,fell,floated,EHS,139000000024.0,39.16
+vo_0087,VO,thank,,thank you for the ride,,thank,you for the ride,sit,talk,give,fall,am,Champaign,135000000023.0,30.0
+vo_0088,VO,have,,I have just one more piece,I,have,just one more piece,give,stay,talk,fall,sit,EHS,139000000050.0,59.26
+vo_0089,VO,do,,you did a good job doing your nightnights,you,did,a good job doing your nightnights,gave,sat,talked,stayed,stepped,Champaign,135000000023.0,30.0
+vo_0090,VO,get,,get some more blue,,get,some more blue,fall,talk,sit,listen,live,EHS,139000000050.0,60.1
+vo_0091,VO,want,,you can pick any one that you want,you can pick any one that you,want,,sit,fall,listen,give,stare,EHS,139000000009.0,25.03
+vo_0092,VO,let,,let me move this here and put the apples on it,,let,me move this here and put the apples on it,sat,talked,lied,fallen,stayed,Edinburgh,185000000417.0,15.53
+vo_0093,VO,say,,this says good dog,this,says,good dog,sits,gives,lives,stays,belongs,EHS,139000000001.0,12.0
+vo_0094,VO,make,,you can make something with this,you can,make,something with this,give,fall,sit,land,talk,EHS,139000000024.0,25.76
+vo_0095,VO,see,,I can't see you,I can't,see,you,listen,belong,lie,give,talk,Champaign,135000000016.0,27.0
+vo_0096,VO,eat,,he ate a leaf,he,ate,a leaf,lay,trod,listened,sat,fell,EHS,139000000009.0,23.92
+vo_0097,VO,thank,,don't lose it anywhere I won't lose it thank you,don't lose it anywhere I won't lose it,thank,you,sit,talk,give,live,am,Edinburgh,185000000849.0,15.39
+vo_0098,VO,have,,I don't know if they have one,I don't know if they,have,one,sit,lie,give,fall,stay,Champaign,135000000009.0,24.0
+vo_0099,VO,do,,what does an ambulance do,what does an ambulance,do,,give,sit,listen,talk,live,Sekali,195000000001.0,
+vo_0100,VO,get,,you've already got the car seat,you've already,got,the car seat,listened,sat,fallen,given,belonged,Champaign,135000000044.0,36.0
+voo_0001,VOO,hand,,hand me the stove,,hand,me the stove,get,bless,sit,want,forget,EHS,139000000009.0,24.85
+voo_0002,VOO,tell,,I told you that,I,told,you that,turned,did,put,got,went,Edinburgh,185000000589.0,15.36
+voo_0003,VOO,wish,,wish she the bus,,wish,she the bus,have,put,go,do,cover,Sekali,195000000001.0,
+voo_0004,VOO,give,,give mommy the pickles,,give,mommy the pickles,thank,live,go,have,wipe,EHS,139000000009.0,24.13
+voo_0005,VOO,show,,show me your hands,,show,me your hands,look,cook,have,find,make,EHS,139000000009.0,24.92
+voo_0006,VOO,teach,,you teach her your heel somehow,you,teach,her your heel somehow,see,turn,open,know,write,Sekali,195000000001.0,
+voo_0007,VOO,hand,,hand me the bag,,hand,me the bag,put,move,sound,see,watch,EHS,139000000024.0,37.39
+voo_0008,VOO,tell,,tell me what these are,,tell,me what these are,move,hold,look,have,do,Champaign,135000000001.0,21.0
+voo_0009,VOO,give,,you didn't give me anything yet,you didn't,give,me anything yet,touch,sit,go,get,do,Champaign,135000000023.0,30.0
+voo_0010,VOO,show,,show momma the toes of the baby,,show,momma the toes of the baby,know,do,write,want,pick,EHS,139000000001.0,13.53
+voo_0011,VOO,teach,,what shall I be teach be teaching how to undo purses,what shall I be,teach,be teaching how to undo purses,cross,find,remember,have,eat,Sekali,195000000001.0,
+voo_0012,VOO,hand,,you chew that bit down and then we'll hand you the glass,you chew that bit down and then we'll,hand,you the glass,make,go,push,blow,break,Edinburgh,185000000099.0,15.69
+voo_0013,VOO,tell,,if granddad was here he could tell us what kind of cows those are,if granddad was here he could,tell,us what kind of cows those are,go,turn,touch,want,press,Champaign,135000000027.0,31.0
+voo_0014,VOO,give,,she gives me a hug,she,gives,me a hug,puts,has,goes,wants,jumps,EHS,139000000024.0,36.3
+voo_0015,VOO,show,,show mom the fish,,show,mom the fish,run,keep,go,thank,drive,EHS,139000000009.0,24.95
+voo_0016,VOO,teach,,it's not he doesn't really teach you anything,it's not he doesn't really,teach,you anything,do,thank,come,wear,get,FMB_home,142000000001.0,23.0
+voo_0017,VOO,hand,,can you hand us some nails and here for me,can you,hand,us some nails and here for me,get,play,put,have,take,Sekali,195000000011.0,
+voo_0018,VOO,tell,,I tell you what,I,tell,you what,take,do,like,want,wonder,Champaign,135000000016.0,27.0
+voo_0019,VOO,give,,give the baby loves,,give,the baby loves,trip,get,tear,see,pop,EHS,139000000001.0,13.56
+voo_0020,VOO,show,,show her the pictures,,show,her the pictures,like,play,live,do,make,EHS,139000000009.0,24.95
+voo_0021,VOO,hand,,hand me more blocks,,hand,me more blocks,come,like,let,take,stick,Champaign,135000000009.0,24.0
+voo_0022,VOO,tell,,why don't you tell him what you're doing,why don't you,tell,him what you're doing,find,do,want,put,bang,Sekali,195000000001.0,
+voo_0023,VOO,give,,give me your hand,,give,me your hand,get,excuse,put,live,have,FMB_home,142000000001.0,23.0
+voo_0024,VOO,show,,show me his nose,,show,me his nose,thank,watch,have,see,do,EHS,139000000001.0,14.39
+voo_0025,VOO,hand,,you can hand me the other one,you can,hand,me the other one,miss,get,throw,put,go,EHS,139000000024.0,39.89
+voo_0026,VOO,tell,,tell mommy what's the matter,,tell,mommy what's the matter,go,put,like,have,sit,EHS,139000000009.0,25.2
+voo_0027,VOO,give,,I gave the sun some rays,I,gave,the sun some rays,had,made,thanked,took,stood,EHS,139000000001.0,15.1
+voo_0028,VOO,show,,I'll show you a trick,I'll,show,you a trick,make,put,shut,fall,roll,EHS,139000000024.0,36.72
+voo_0029,VOO,hand,,hand me your other shoe,,hand,me your other shoe,have,put,help,do,like,Champaign,135000000039.0,37.0
+voo_0030,VOO,tell,,let me tell you a story,let me,tell,you a story,have,think,thank,play,call,EHS,139000000009.0,24.23
+voo_0031,VOO,give,,give me a kiss,,give,me a kiss,put,close,watch,stand,have,Edinburgh,185000000589.0,15.36
+voo_0032,VOO,show,,you can show her your socks,you can,show,her your socks,put,tickle,hold,go,find,Champaign,135000000027.0,30.0
+voo_0033,VOO,hand,,I'll hand you the box and you can stack them up,I'll,hand,you the box and you can stack them up,come,take,do,have,thank,Champaign,135000000001.0,21.0
+voo_0034,VOO,tell,,tell me what this is,,tell,me what this is,lick,check,take,eat,thank,Edinburgh,185000000349.0,15.36
+voo_0035,VOO,give,,I'll give him these little coasters here's the wooden coasters,I'll,give,him these little coasters here's the wooden coasters,have,find,get,say,eat,Edinburgh,185000000439.0,15.39
+voo_0036,VOO,show,,I'll show you that at home,I'll,show,you that at home,find,draw,have,chew,use,Champaign,135000000039.0,36.0
+voo_0037,VOO,tell,,tell him what the pig says,,tell,him what the pig says,call,say,get,help,stand,Champaign,135000000044.0,37.0
+voo_0038,VOO,give,,give me your pig and your car,,give,me your pig and your car,say,turn,play,know,like,Champaign,135000000001.0,21.0
+voo_0039,VOO,show,,show mommy the blue blocks,,show,mommy the blue blocks,hear,need,feel,lose,like,EHS,139000000009.0,23.43
+voo_0040,VOO,tell,,I tell you what sweetheart,I,tell,you what sweetheart,go,make,look,sit,throw,Edinburgh,185000000349.0,15.36
+voo_0041,VOO,give,,when someone asks you for spare change just give them a penny,when someone asks you for spare change just,give,them a penny,put,stick,sit,skip,build,Edinburgh,185000000832.0,15.36
+voo_0042,VOO,show,,show mama what you got,,show,mama what you got,thank,line,talk,eat,get,EHS,139000000009.0,24.85
+voo_0043,VOO,tell,,tell me what these are,,tell,me what these are,look,see,put,know,drive,EHS,139000000009.0,23.56
+voo_0044,VOO,give,,give it a big stir,,give,it a big stir,understand,see,move,look,close,Edinburgh,185000000304.0,15.43
+voo_0045,VOO,show,,show mommy the baby's hand,,show,mommy the baby's hand,get,see,tickle,go,come,EHS,139000000001.0,15.03
+voo_0046,VOO,tell,,told you what that was,,told,you what that was,picked,let,cut,had,saw,Edinburgh,185000000589.0,15.36
+voo_0047,VOO,give,,after you give her a bath you can dry her off with the towel,after you,give,her a bath you can dry her off with the towel,blow,leave,get,see,make,Champaign,135000000027.0,30.0
+voo_0048,VOO,show,,show me the car,,show,me the car,do,see,break,go,get,EHS,139000000024.0,37.39
+voo_0049,VOO,tell,,who are you telling you,who are you,telling,you,looking,playing,folding,hopping,drying,Sekali,195000000001.0,
+voo_0050,VOO,give,,did we give you count,did we,give,you count,see,do,go,have,feel,Sekali,195000000001.0,
+voo_0051,VOO,show,,show me the way the baby swing,,show,me the way the baby swing,look,do,have,let,want,EHS,139000000009.0,23.56
+voo_0052,VOO,tell,,can I tell you what,can I,tell,you what,write,look,like,carry,start,Sekali,195000000001.0,
+voo_0053,VOO,give,,could you give him some white wheels,could you,give,him some white wheels,fix,look,put,stay,cook,Sekali,195000000011.0,
+voo_0054,VOO,show,,show me your flip,,show,me your flip,look,thank,get,see,say,EHS,139000000009.0,26.56
+voo_0055,VOO,tell,,tell her what you're doing,,tell,her what you're doing,sit,look,go,get,put,Champaign,135000000044.0,36.0
+voo_0056,VOO,give,,they give us eggs like chickens,they,give,us eggs like chickens,sit,call,put,pick,eat,EHS,139000000024.0,39.85
+voo_0057,VOO,show,,show us how you do a flip,,show,us how you do a flip,count,look,get,like,go,EHS,139000000024.0,37.16
+voo_0058,VOO,tell,,tell the lady buhbye,,tell,the lady buhbye,open,go,move,do,make,EHS,139000000001.0,13.72
+voo_0059,VOO,give,,I gave you the moon,I,gave,you the moon,saw,thanked,ate,cried,got,EHS,139000000044.0,67.36
+voo_0060,VOO,show,,show me how you shake them,,show,me how you shake them,look,mind,let,get,find,FMB_home,142000000001.0,24.0
+voo_0061,VOO,tell,,tell you a story,,tell,you a story,get,have,come,want,look,EHS,139000000001.0,13.85
+voo_0062,VOO,give,,we better give him a checkup first,we better,give,him a checkup first,dip,build,get,thank,look,EHS,139000000044.0,69.03
+voo_0063,VOO,show,,that'll show you Mummy,that'll,show,you Mummy,put,sit,say,let,see,Edinburgh,185000000335.0,15.03
+voo_0064,VOO,tell,,tell them the whole story,,tell,them the whole story,write,put,get,push,talk,EHS,139000000050.0,65.49
+voo_0065,VOO,give,,you always win you never give me a chance,you always win you never,give,me a chance,get,wash,put,think,sort,Edinburgh,185000000701.0,15.49
+voo_0066,VOO,show,,sit down and I'll show you prize,sit down and I'll,show,you prize,close,find,hang,blow,have,EHS,139000000009.0,25.36
+voo_0067,VOO,tell,,tell me how much I owe you,,tell,me how much I owe you,do,know,like,make,remember,EHS,139000000024.0,38.3
+voo_0068,VOO,give,,can you give us some soap,can you,give,us some soap,kill,see,have,fall,hold,Sekali,195000000001.0,
+voo_0069,VOO,show,,show me how you can cook,,show,me how you can cook,sleep,build,lose,take,get,EHS,139000000009.0,28.23
+voo_0070,VOO,tell,,tell me all about it,,tell,me all about it,break,get,fall,have,put,EHS,139000000050.0,56.85
+voo_0071,VOO,give,,give me my nose,,give,me my nose,put,have,understand,push,make,Champaign,135000000001.0,21.0
+voo_0072,VOO,show,,show me what you would think the froggy'll do,,show,me what you would think the froggy'll do,put,do,see,let,come,Champaign,135000000023.0,30.0
+voo_0073,VOO,tell,,tell me what you see,,tell,me what you see,nibble,mirar,keep,watch,want,Champaign,135000000005.0,21.0
+voo_0074,VOO,give,,give him his nose and his mustache and he can smell,,give,him his nose and his mustache and he can smell,put,make,use,say,thank,Champaign,135000000035.0,33.0
+voo_0075,VOO,show,,show mommy the nose,,show,mommy the nose,pick,am,touch,take,see,EHS,139000000001.0,15.1
+voo_0076,VOO,tell,,tell mommy what you see,,tell,mommy what you see,excuse,know,leave,have,play,Champaign,135000000009.0,24.0
+voo_0077,VOO,give,,let me give you some leg room,let me,give,you some leg room,touch,hear,catch,walk,see,Champaign,135000000016.0,27.0
+voo_0078,VOO,show,,show me the pillow,,show,me the pillow,come,make,think,get,see,EHS,139000000001.0,15.46
+voo_0079,VOO,tell,,tell us all about it,,tell,us all about it,say,have,think,chew,throw,Sekali,195000000001.0,
+voo_0080,VOO,give,,give me the cover,,give,me the cover,grab,sit,go,take,know,EHS,139000000009.0,23.99
+voo_0081,VOO,show,,show me the green spoon,,show,me the green spoon,make,do,go,get,have,Champaign,135000000016.0,27.0
+voo_0082,VOO,tell,,pull that out and tell me what we got,pull that out and,tell,me what we got,hear,put,hide,leave,call,EHS,139000000044.0,69.62
+voo_0083,VOO,give,,give them one scoop,,give,them one scoop,do,get,hear,have,drink,FMB_home,142000000001.0,25.0
+voo_0084,VOO,show,,you show me the babies,you,show,me the babies,make,work,sit,wrap,have,EHS,139000000001.0,14.46
+voo_0085,VOO,tell,,tell me a story about something,,tell,me a story about something,get,find,have,write,go,EHS,139000000050.0,65.92
+voo_0086,VOO,give,,give me some food,,give,me some food,let,have,talk,put,say,EHS,139000000001.0,13.76
+voo_0087,VOO,show,,show mommy the nose,,show,mommy the nose,see,talk,look,have,find,EHS,139000000001.0,15.03
+voo_0088,VOO,tell,,I want him to tell me that one,I want him to,tell,me that one,put,get,sit,drink,pick,EHS,139000000009.0,26.07
+voo_0089,VOO,give,,you give me a clue,you,give,me a clue,put,look,close,want,turn,Champaign,135000000039.0,36.0
+voo_0090,VOO,show,,show me the white one,,show,me the white one,go,make,thank,hurt,eat,EHS,139000000009.0,23.43
+voo_0091,VOO,tell,,you have to tell him what each of the animals are,you have to,tell,him what each of the animals are,see,talk,say,find,go,Champaign,135000000044.0,37.0
+voo_0092,VOO,give,,they gave me a kitten a cat,they,gave,me a kitten a cat,sang,needed,had,said,was,Sekali,195000000001.0,
+voo_0093,VOO,show,,show me the shirt,,show,me the shirt,look,have,ride,say,thank,EHS,139000000009.0,23.49
+voo_0094,VOO,tell,,tell me what this is,,tell,me what this is,get,take,see,throw,thank,EHS,139000000009.0,24.66
+voo_0095,VOO,give,,let's you need you have to give us your bu,let's you need you have to,give,us your bu,bother,turn,get,thank,put,FMB_home,142000000001.0,23.0
+voo_0096,VOO,show,,let's show me the flipper,let's,show,me the flipper,come,want,fit,face,get,Champaign,135000000023.0,30.0
+voo_0097,VOO,tell,,let me tell you a story about the keys,let me,tell,you a story about the keys,look,fit,put,try,hold,EHS,139000000009.0,28.23
+voo_0098,VOO,give,,give her more pizza,,give,her more pizza,turn,come,have,hurt,take,Champaign,135000000019.0,27.0
+voo_0099,VOO,show,,we'll show him how to do it,we'll,show,him how to do it,cut,get,sit,go,make,Champaign,135000000005.0,21.0
+voo_0100,VOO,tell,,tell me what the cow says,,tell,me what the cow says,come,get,work,know,put,Champaign,135000000001.0,21.0
